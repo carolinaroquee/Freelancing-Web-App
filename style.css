@@ -1,0 +1,14 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Imperial+Script&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+header{
+    font-family: "Roboto";
+    font-style: normal;
+    background-color: grey;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
