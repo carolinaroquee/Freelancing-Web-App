@@ -1,14 +1,100 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Imperial+Script&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-header{
+*{
     font-family: "Roboto";
     font-style: normal;
-    background-color: grey;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
 }
 
-a{
+header {
+    font-family: "Roboto";
+    font-style: normal;
+    background-color: whitesmoke;
+    border-bottom: 1px solid #ddd;
+    height: auto;
+}  
+    
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 30px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+#logo{
+    height:70px;
+    width: auto;
+}
+
+/*seleciona os a descentes de nav que nao são o first-child*/
+.nav-links a{
     text-decoration: none;
-    color: black;
+    color: #333;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.join-btn {
+    padding: 6px 14px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background-color: transparent;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.join-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.search-services{
+    background-image: url('Background-navbar2.jpg');
+    height: 25cm;
+    width: 100%;
+    background-repeat: no-repeat;      
+    background-size: cover;
+    margin: 0;
+}
+
+.search-services{
+    padding: 400px 30px;
+}
+
+.search-services h2{
+    font-size: 70px;
+    color: #0063ba;
+    padding-bottom: 15px;
+}
+
+.search-bar{
+    width: 70%;
+    height: 2cm;
+    font-size: 30px;
+    border: 2px solid black;
+    border-radius: 10px ;
+    padding: 5mm; /* distancia da frase à search bar*/
+    font-weight: bold;
+}
+
+.main-services{
+    padding-top: 20px;
+}
+
+.main-services > *{
+    width: 45mm;
+    height: 15mm;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: white ;
+    margin-right: 1cm;
+    font-size: 15px;
+    font-weight: bold;
 }
