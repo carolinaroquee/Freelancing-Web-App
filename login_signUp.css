@@ -1,48 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro&display=swap');
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Crimson Pro', sans-serif;
     background-color: #f3f3f3;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 90vh;
-    margin: 0;
-  }
+    height: auto;
+    margin:20px;
+}
   
-.login-block {
+.login-block, .signUp-block {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgb(168, 166, 166);
-    width: 300px;
+    width: 400px;
     text-align: center;
 }
 
-.signUp-block {
-    background-color: #ffffff;
-    padding: 45px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgb(168, 166, 166);
-    width: 300px;
-    text-align: center;
+#logo {
+    width: 60px;
+    height: auto;
+    margin-bottom: 10px;
+}
+#google-logo {
+    width: 20px;
+    height: auto;
 }
   
-.logo {
-    width: 80px;
-    margin-bottom: 20px;
-    
-}
-  
-.login-block h1 {
-    margin-bottom: 20px;
-}
 
-.signUp-block h1 {
+.login-block h1, .signUp-block h1 {
     margin-bottom: 20px;
 }
   
-.login-block input {
+.login-block input, .signUp-block input {
     align-items: center;
     width: 100%;
     padding: 12px;
@@ -51,64 +46,43 @@ body {
     border-radius: 6px;
     font-size: 14px;
 }
-
-.signUp-block input {
-    align-items: center;
+  
+.login-block button, .signUp-block button {
+    font-family: 'Crimson Pro', sans-serif;
     width: 100%;
     padding: 12px;
-    margin-bottom: 10px;
+    background-color: #0063ba;
+    border: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 6px;
+    
+}
+.login-block .google-btn{
+    font-family: 'Crimson Pro', sans-serif;
+    width: 100%;
+    padding: 12px;
+    background-color: whitesmoke;
     border: 1px solid #ccc;
+    color: black;
+    font-size: 20px;
     border-radius: 6px;
+}
+  
+.login-block button:hover, .signUp-block button:hover {
+    background-color: #ffcc00;
+}
+.login-block .google-btn:hover{
+    background-color: grey;
+}
+
+.login-text, .signup-text {
     font-size: 14px;
 }
   
-.login-block button {
-    font-family: 'Crimson Pro', sans-serif;
-    width: 100%;
-    padding: 13px;
-    background-color: #1c2dc9;
-    border: none;
-    color: white;
-    font-size: 20px;
-    border-radius: 6px;
-    
-}
-
-.signUp-block button {
-    font-family: 'Crimson Pro', sans-serif;
-    width: 100%;
-    padding: 13px;
-    background-color: #1c2dc9;
-    border: none;
-    color: white;
-    font-size: 20px;
-    border-radius: 6px;
-    
-}
-  
-.login-block button:hover {
-    background-color: #2b3eab94;
-}
-
-.signUp-block button:hover {
-    background-color: #2b3eab94;
-}
-
-.signup-text {
-    margin-top: 20px;
-    font-size: 14px;
-}
-  
-.signup-text a {
+.login-text a, .signup-text a {
     color: #1c2dc9;
 }
 
-.login-text {
-    margin-top: 20px;
-    font-size: 14px;
-}
-  
-.login-text a {
-    color: #1c2dc9;
-}
-  
+
+
