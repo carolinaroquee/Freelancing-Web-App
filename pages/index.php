@@ -1,6 +1,11 @@
 <?php
     require_once(__DIR__. '/../templates/common.tpl.php');    
+    require_once(__DIR__.'/../database/connection.db.php');
+    require_once(__DIR__.'/../database/categories.php');
     $session = new Session();
+    $db = getDatabaseConnection();
+    $categories  = getAllCategories($db);
+
     drawHeader($session);
 ?>
 <!DOCTYPE html>
@@ -28,12 +33,11 @@
             <section class = "product">
                 <section class="categories">
                     <h2>Explore categories</h2>
-                    <button>Matematica A</button>
-                    <button>Biologia e Geologia</button>
-                    <button>Economia A</button>
-                    <button>Física e Química A</button>
-                    <button>Geometria Descritiva A</button>
-                    <button>Geografia A</button>
+                    <?php foreach($categories as $category){ ?>
+
+                        <button><?=$category['category_name']?></button>
+
+                    <?php } ?>
                 </section>
                 <section class="services">
                     <h2>Popular services</h2>
