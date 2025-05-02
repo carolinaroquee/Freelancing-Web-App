@@ -19,6 +19,13 @@
                         else drawVisitorNav();
                     ?>
                 </nav>
+                <section id="messages">
+                    <?php foreach ($session->getMessages() as $messsage) { ?>
+                        <article class="<?=$messsage['type']?>">
+                            <?=$messsage['text']?>
+                        </article>
+                    <?php } ?>
+                </section>
             </header>
         </body> 
     </html>
@@ -105,7 +112,7 @@
     </footer>
 <?php } ?>
 
-<?php function drawLogin(Session $session){ ?>
+<?php function drawSignUp(Session $session){ ?>
     <!DOCTYPE html>
     <html>
         <head>
@@ -133,8 +140,47 @@
                     <input type="password" name="confirm_password" placeholder="Password confirmation" required />
                     <button type="submit">Create Account</button>
                 </form>
-                <p class="login-text">Already have an account? <a href="file_login.html"> Join here</a></p>
+                <p class="login-text">Already have an account? <a href="../pages/login.php"> Join here</a></p>
             </section> 
         </body>
     </html>
+<?php } ?>
+
+<?php function drawLogin(Session $session) {?>
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Login</title>
+            <link rel="stylesheet" href="../css/login_signUp.css">
+        </head>
+        <body>
+            <section class="login-block">
+                <img id="logo" src="../docs/BrightMinds_logo - Copy.png"/>
+                <h1>Enter with your account</h1>
+
+                <section id="messages">
+                    <?php foreach ($session->getMessages() as $messsage) { ?>
+                        <article class="<?=$messsage['type']?>">
+                            <?=$messsage['text']?>
+                        </article>
+                    <?php } ?>
+
+                </section>
+                <!-- post pq assim os dados são enviados de forma invisível na msg http -->
+                <form action="../actions/action_login.php" method="post"> 
+                    <input type="text" name="username" placeholder="Username" required />
+                    <input type="password" name="password" placeholder="Password" required />
+                    <button type="submit">Login</button> 
+                </form>
+                <p> or sign in with </p>
+                <form action="../actions/action_login.php" method="post">
+                    <button type="submit" class="google-btn">
+                        <img id="google-logo" src="../docs/google_logo.png" alt="Google logo"/>Continue with Google</button>
+                </form>
+                <p class="signup-text">Don't have an account? <a href="../pages/sign_up.php">Join here</a></p>
+                
+            </section>    
+        </body>
+    </html>
+
 <?php } ?>

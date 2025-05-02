@@ -26,8 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Hash da senha para segurança
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    //$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Verificar se o nome de utilizador ou e-mail já existem
     
@@ -47,7 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $db->prepare('INSERT INTO User (username, email, password, usertype, data_registo) VALUES (:username, :email, :password,:usertype,:data)');
     $stmt->bindParam(':username', $username);
     $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':password', $hashed_password);
+    $stmt->bindParam(':password',$password);
+    //$stmt->bindParam(':password', $hashed_password);
     $stmt->bindParam(':usertype', $user_type);
     $stmt->bindParam(':data', $data);
     
