@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS Review;
 CREATE TABLE User (
     user_id INTEGER PRIMARY KEY,
     username TEXT UNIQUE NOT NULL,
-    birth_data DATE NOT NULL,
-    name TEXT NOT NULL,
+    birth_data DATE,
+    name TEXT,
     email TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL,
     usertype TEXT CHECK(usertype IN ('estudante', 'explicador', 'admin')) NOT NULL,
