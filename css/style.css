@@ -26,6 +26,7 @@ nav{
 }
 
 .nav-links {
+    list-style: none;
     display: flex;
     align-items: center;
     gap: 50px;
@@ -36,8 +37,8 @@ nav{
     width: auto;
 }
 
-/*seleciona os a descentes de nav que nao são o first-child*/
-.nav-links a{
+
+.nav-links li a, .nav-right a{
     text-decoration: none;
     color: #333;
     font-weight: 600;
@@ -56,6 +57,17 @@ nav{
 .join-btn:hover {
     background-color: #f0f0f0;
 }
+
+
+/* Nav-bar quando o utilizador está loged in*/
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
 
 .search-services{
     background-image: url('../docs/Background-navbar2.jpg');

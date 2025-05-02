@@ -12,36 +12,39 @@
         </head>
         <body>
             <header>
-                <?php
-                    if($session->isLoggedIn()) drawLogoutForm($session);
-                    else drawLoginForm($session);
-                ?>
+                <nav>
+                    <a href="../pages/index.php"><img id="logo" src="../docs/BrightMinds_logo.png" alt="BrightMinds Logo"></a> 
+                    <?php
+                        if($session->isLoggedIn()) drawUserNav($session);
+                        else drawVisitorNav();
+                    ?>
+                </nav>
             </header>
-        </body>
+        </body> 
     </html>
 
 <?php } ?>
 
-<?php function drawLoginForm() { ?>
-    <!DOCTYPE html>
-    <nav>
-        <a href=""><img id="logo" src="../docs/BrightMinds_logo.png" alt="Logo"></a> 
-        <div class="nav-links">
-            <a href="">Become a Seller</a>
-            <a href="login.php">Sign In </a>
-            <a href="sign_up.php" class="join-btn">Join</a>  
-        </div>
-    </nav>
+<?php function drawVisitorNav() { ?>
+    <ul class="nav-links">
+        <li><a href="">Become a Seller</a></li>
+        <li><a href="../pages/login.php">Sign In</a></li>
+        <li><a href="../pages/sign_up.php" class="join-btn">Join</a></li>
+    </ul>
 <?php } ?>
 
 
 
-<?php function drawLogoutForm() { ?>
-  
+<?php function drawUserNav(Session $session) { ?>
+    <div class="nav-right">
+        <a href="../pages/profile.php" ><img src="../docs/default_profile_image.png" alt="profile image" id="profile"></a>
+        <form action="../actions/action_logout.php" method="post">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
 <?php } ?>
 
 <?php function drawMainPage(Session $session, array $categories){ ?>
-    <!DOCTYPE html>
     <html>
         <body>
             <main>
@@ -95,7 +98,6 @@
 <?php } ?> 
 
 <?php function drawFooter(){ ?>
-    <!DOCTYPE html>
     <footer>
         <h4>Genius Academy</h4>
         <p>77% of our users improve</p>

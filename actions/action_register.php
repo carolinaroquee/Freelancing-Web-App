@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $session->addMessage('sucess','Account created successfully!');
 
     // depois de criar conta vai ter à homepage
-    header("Location:../pages/sign_up.php");
+    header("Location:../pages/index.php");
     exit;
 }
 ?>
