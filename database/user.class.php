@@ -5,30 +5,26 @@
 
     public int $id;
     public string $username;
-    public ?string $name;
+    public string $name;
     public string $email;
     public string $password; 
-    /*public string $user_type;*/
+    public ?string $user_type;
+    public ?string $birth_data;
+    public ?string $address;
+    public ?string $postal_code;
+    public ?string $city;
 
-    /*public string $birth_data,
-    /*public string $address;
-    public string $postalcode;
-    public string $city;
-    public string $country
-    public string $phone;*/
-
-    public function __construct(int $id, string $username, ?string $name, string $email, string $password, /*string $user_type string $address,string $postalcode, string $phone */) { 
+    public function __construct(int $id, string $username, string $name, string $email, string $password, ?string $user_type, ?string $birth_data, ?string $address, ?string $postal_code, ?string $city) { 
       $this->id = $id;
       $this->username = $username;
       $this->name= $name;
       $this->email = $email;
       $this->password= $password;
-      /*$this->user_type= $user_type;*/
-      /*$this->address = $address;
-      $this->postalcode = $postalcode;
+      $this->user_type= $user_type;
+      $this->birth_data= $birth_data;
+      $this->address = $address;
+      $this->postal_code = $postal_code;
       $this->city=$city;
-      $this->country=$country;
-      $this->phone = $phone;*/
     }
 
     function getName() : string {
@@ -46,9 +42,9 @@
                                     /*$this->address, ,$this->id*/));
     }
 
-
+    
     static function getUserWithPassword(PDO $db, string $username, string $password) : ?User {
-
+      
       $stmt = $db->prepare('SELECT * FROM User WHERE username = ?');
       
       $stmt->execute(array($username));
@@ -62,9 +58,11 @@
           $user['name'],
           $user['email'],
           $user['password'],
-          /*$user['user_type'],*/
-          /*$user['address'],
-          intval($user['phoneNumber']),*/
+          $user['user_type'],
+          $user['birth_data'],
+          $user['address'],
+          $user['postal_code'],
+          $user['city']
         );
       } else return null;
     }

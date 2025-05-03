@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // respostas do forms de sign up
+    $name= $_POST['name'];
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -43,10 +44,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Inserir os dados na base de dados
-    $stmt = $db->prepare('INSERT INTO User (username, email, password, usertype, data_registo) VALUES (:username, :email, :password,:usertype,:data)');
+    $stmt = $db->prepare('INSERT INTO User (username, name, email, password, usertype, data_registo) VALUES (:username,:name, :email, :password,:usertype,:data)');
     $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':name', $name);
     $stmt->bindParam(':email', $email);
-    //$stmt->bindParam(':password',$password);
     $stmt->bindParam(':password', $hashed_password);
     $stmt->bindParam(':usertype', $user_type);
     $stmt->bindParam(':data', $data);
@@ -60,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    // guarda o id do user na sessão e o username na sessão
    $session->setId($user_id);
    $session->setUsername($username);
+   $session->setName($name);
    $session->addMessage('sucess','Account created successfully!');
 
     // depois de criar conta vai ter à homepage

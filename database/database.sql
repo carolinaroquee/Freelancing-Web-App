@@ -24,11 +24,14 @@ DROP TABLE IF EXISTS Review;
 CREATE TABLE User (
     user_id INTEGER PRIMARY KEY,
     username TEXT UNIQUE NOT NULL,
+    name TEXT NOT NULL,
     birth_data DATE,
-    name TEXT,
     email TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL,
     usertype TEXT CHECK(usertype IN ('estudante', 'explicador', 'admin')) NOT NULL,
+    address TEXT,
+    postal_code TEXT,
+    city TEXT,
     data_registo DATE NOT NULL
 );
 
@@ -106,7 +109,6 @@ CREATE TABLE Review (
     FOREIGN KEY (booking_id) REFERENCES Booking(booking_id) ON DELETE RESTRICT ON UPDATE CASCADE /*On delete restrict bloqueia o apagamento da marcação se existir uma review associada.c*/
 );
 
-INSERT INTO User VALUES (NULL,'anitalves08', '25-03-2005', 'Ana Alves', 'anafalves999@gmail.com', '1234', 'admin', '30-04-2025');
 
 INSERT INTO Category VALUES('Math');
 INSERT INTO Category VALUES('Science');
