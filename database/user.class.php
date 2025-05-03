@@ -40,16 +40,9 @@
 
     static function getUserWithPassword(PDO $db, string $username, string $password) : ?User {
 
+      $stmt = $db->prepare('SELECT * FROM User WHERE username = ? ');
       
-    $stmt = $db->prepare("SELECT * FROM User WHERE username = :username AND password = :password");
-    $stmt->bindParam(':username', $username);
-    $stmt->bindParam(':password', $password);
-    $stmt->execute();
-    $user = $stmt->fetch();
-
-      $stmt = $db->prepare('SELECT * FROM User WHERE username = ? AND password= ? ');
-      
-      $stmt->execute(array($username, sha1($password)));
+      $stmt->execute(array($username));
       
       $user = $stmt->fetch();
 
