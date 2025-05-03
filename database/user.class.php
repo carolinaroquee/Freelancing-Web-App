@@ -5,21 +5,30 @@
 
     public int $id;
     public string $username;
-    public string $name;
+    public ?string $name;
     public string $email;
-    public string $password; /*nao sei se deve estar aqui*/
-    public string $address;
-    public string $postalcode;
-    public string $phone;
+    public string $password; 
+    /*public string $user_type;*/
 
-    public function __construct(int $id, string $username, string $name, string $email, string $address,string $postalcode, string $phone ) { 
+    /*public string $birth_data,
+    /*public string $address;
+    public string $postalcode;
+    public string $city;
+    public string $country
+    public string $phone;*/
+
+    public function __construct(int $id, string $username, ?string $name, string $email, string $password, /*string $user_type string $address,string $postalcode, string $phone */) { 
       $this->id = $id;
       $this->username = $username;
       $this->name= $name;
       $this->email = $email;
-      $this->address = $address;
+      $this->password= $password;
+      /*$this->user_type= $user_type;*/
+      /*$this->address = $address;
       $this->postalcode = $postalcode;
-      $this->phone = $phone;
+      $this->city=$city;
+      $this->country=$country;
+      $this->phone = $phone;*/
     }
 
     function getName() : string {
@@ -29,18 +38,18 @@
 
     function save($db) {
       $stmt = $db->prepare('
-        UPDATE User SET name = ?, email = ?, password = ?
+        UPDATE User SET username = ?, email = ?, password = ?
         WHERE user_id = ?
       ');
 
-      $stmt->execute(array($this->name, $this->email, $this->password, 
-                                    $this->address, $this->phoneNumber, $this->id));
+      $stmt->execute(array($this->username, $this->email, $this->password, $this->id 
+                                    /*$this->address, ,$this->id*/));
     }
 
 
     static function getUserWithPassword(PDO $db, string $username, string $password) : ?User {
 
-      $stmt = $db->prepare('SELECT * FROM User WHERE username = ? ');
+      $stmt = $db->prepare('SELECT * FROM User WHERE username = ?');
       
       $stmt->execute(array($username));
       
@@ -50,32 +59,35 @@
         return new User(
           intval($user['id']),
           $user['username'],
+          $user['name'],
           $user['email'],
           $user['password'],
-          $user['address'],
-          intval($user['phoneNumber']),
+          /*$user['user_type'],*/
+          /*$user['address'],
+          intval($user['phoneNumber']),*/
         );
       } else return null;
     }
 
     static function getUser(PDO $db, int $id) : User {
 
-      $stmt = $db->prepare('SELECT id, name, email, password, address, phoneNumber FROM User WHERE id = ?');
+      $stmt = $db->prepare('SELECT user_id, username, email, password, user_type/*, address, phoneNumber*/ FROM User WHERE user_id = ?');
       $stmt->execute(array($id));
   
       $user = $stmt->fetch();
   
       return new User(
           intval($user['id']),
-          $user['name'],
+          $user['username'],
           $user['email'],
           $user['password'],
-          $user['address'],
-          intval($user['phoneNumber']),
+          $user['user_type'],
+          /*$user['address'],
+          intval($user['phoneNumber']),*/
       );
     }  
 
-    /*tentativa da função para ir buscar a foto de perfil*/
+    /*tentativa da função para ir buscar a foto de perfil
     function getPhoto() : string {
       $default = "../docs/default_profile_image.png";
       $attemp = "";
@@ -83,7 +95,7 @@
         $_SESSION['photo'] = $attemp;
         return $attemp;
       } else return $default;
-    }  
+    }  */
 
     
   }
