@@ -44,72 +44,114 @@
 
 <?php function drawUserNav(Session $session) { ?>
     <div class="nav-right">
-        <a href="../pages/profile.php" ><img src="../docs/default_profile_image.png" alt="profile image" id="profile"></a>
         <form action="../actions/action_logout.php" method="post">
             <button type="submit" class="logout-btn">Logout</button>
         </form>
+        <a href="../pages/profile.php"><Profile></a>
+        <a href="../pages/profile.php" ><img src="../docs/default_profile_image.png" alt="profile image" id="profile"></a>
     </div>
 <?php } ?>
 
 <?php function drawMainPage(Session $session, array $categories){ ?>
-    <html>
-        <body>
-            <main>
-                <section class="search-services">
-                    <h2>Learn from the best</h2>
-                    <form>
-                        <input class= "search-bar" type="search" placeholder="what service are you looking for?">
-                    </form>
-                    <form class="main-services">
-                        <button>
-                            Exp. individual
-                        </button>
-                        <button> 
-                            Exp. grupo
-                        </button>
-                        <button>
-                            Revisão de trabalhos
-                        </button>
-                    </form>
-                </section>
-
-                <section class = "product">
-                    <section class="categories">
-                        <h2>Explore categories</h2>
-                        <?php foreach($categories as $category){ ?>
-
-                            <button><?=$category['category_name']?></button>
-
-                        <?php } ?>
-                    </section>
-                    <section class="services">
-                        <h2>Popular services</h2>
-                        <button>
-                            <img src="../docs/exp-ind.jpg" alt="Explicação individual">
-                            <span>Exp. individual</span>
-                        </button>
-                        <button>
-                            <img src="../docs/exp-grp.jpg" alt="Explicação grupo">
-                            <span>Exp. individual</span>
-                        </button>
-                        <button>
-                            <img src="../docs/rev-trabalho.jpg" alt="Revisão de trabalho">
-                            <span>Exp. individual</span>
-                        </button>
-                    </section>
-                </section>
-
-            </main>
-        </body>
-    </html>
+    <main>
+        <section class="search-services">
+            <h2>Learn from the best</h2>
+            <form>
+                <input class= "search-bar" type="search" placeholder="what service are you looking for?">
+            </form>
+            <form class="main-services">
+                <button>
+                    Exp. individual
+                </button>
+                <button> 
+                    Exp. grupo
+                </button>
+                <button>
+                    Revisão de trabalhos
+                </button>
+            </form>
+        </section>
+        <section class = "product">
+            <section class="categories">
+                <h2>Explore categories</h2>
+                <?php foreach($categories as $category){ ?>
+                    <button><?=$category['category_name']?></button>
+                <?php } ?>
+            </section>
+            <section class="services">
+                <h2>Popular services</h2>
+                <button>
+                    <img src="../docs/exp-ind.jpg" alt="Explicação individual">
+                    <span>Exp. individual</span>
+                </button>
+                <button>
+                    <img src="../docs/exp-grp.jpg" alt="Explicação grupo">
+                    <span>Exp. individual</span>
+                </button>
+                <button>
+                    <img src="../docs/rev-trabalho.jpg" alt="Revisão de trabalho">
+                    <span>Exp. individual</span>
+                </button>
+            </section>
+        </section>
 <?php } ?> 
 
-<?php function drawFooter(){ ?>
-    <footer>
-        <h4>Genius Academy</h4>
-        <p>77% of our users improve</p>
-        <p>Click <a href="">here</a> to check our best freelancers</p>
-    </footer>
+<?php function drawFooter(array $categories){ ?>
+        
+        </main>
+        <footer>
+            <div class="footer-content">
+                <section class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="">Who we are?</a></li>
+                        <li><a href="">Legal Notice</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Districts</a></li>
+                        <li><a href="">Work with us</a></li>
+                    </ul>
+                </section>
+                <section class="footer-column">
+                    <h3>Categories</h3>
+                    <ul>
+                        <?php foreach($categories as $category){ ?>
+                            <li>
+                                <a href=""><?=$category['category_name']?>
+                                </a>
+                            </li>
+                        <?php } ?>
+        
+                    </ul>
+                </section>
+                <section class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </section>
+
+                <section class="footer-column">
+                    <h3>Follow us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </section>
+                <div class="footer-bottom">
+                    <hr>
+                    <p>© 2025 Bright Minds, where curious minds meet brilliant teachers.</p>
+                </div>
+                
+            </div>
+            
+                
+          
+                
+        </footer>
+    </body>
+</html>
 <?php } ?>
 
 <?php function drawSignUp(Session $session){ ?>

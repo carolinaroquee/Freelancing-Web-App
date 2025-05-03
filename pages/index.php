@@ -8,6 +8,6 @@
 
     drawHeader($session);
     drawMainPage($session,$categories);
-    drawFooter();
+    drawFooter($categories);
 
 ?>
