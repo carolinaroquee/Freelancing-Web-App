@@ -1,5 +1,6 @@
 <?php
     require_once(__DIR__. '/../utils/session.php');
+    require_once(__DIR__.'/../database/user.class.php');
 ?>
 
 <?php function drawHeader(Session $session){ ?>
@@ -227,3 +228,29 @@
     </html>
 
 <?php } ?>
+
+<?php function drawEditProfile(User $user){ ?>
+    <!DOCTYPE html>
+    <html>
+        <h2>Profile</h2>
+        <form action="../actions/action_edit_profile.php" method="post" class="profile">
+
+        <label for="name">Name:</label>
+        <input id="name" type="text" name="Name" value="<?=$user->name?>">
+        
+        <label for="username">Username:</label>
+        <input id="username" type="text" name="Username" value="<?=$user->username?>">
+
+        <label for="email">Email:</label>
+        <input id="email" type="text" name="Email" value="<?=$user->email?>">
+
+        <label for="user_type">User_type:</label>
+        <input id="user_type" type="text" name="User_type" value="<?=$user->user_type?>">
+
+        <label for="data_registo">Data Registo:</label>
+        <input id="data_registo" type="text" name="Data_registo" value="<?=$user->data_registo?>">
+        
+        <button type="submit">Save</button>
+        </form>
+    </html>    
+<?php }?>
