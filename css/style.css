@@ -11,11 +11,13 @@
 header {
     font-family: "Roboto";
     font-style: normal;
-    background-color: whitesmoke;
+    background-color:whitesmoke;
     border-bottom: 1px solid #ddd;
-    height: auto;
+    height: 80px;
     width: 100%;
     position: fixed;
+    top:0;
+    left:0;
 }  
     
 

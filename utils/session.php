@@ -4,6 +4,9 @@
 
     public function __construct() {
       session_start();
+      if(!isset($_SESSION['csrf'])){
+        $_SESSION['csrf']=$this->generate_random_token();
+      }
 
       $this->messages = isset($_SESSION['messages']) ? $_SESSION['messages'] : array();
       unset($_SESSION['messages']);
@@ -46,6 +49,10 @@
 
     public function getMessages() {
       return $this->messages;
+    }
+
+    public function generate_random_token() {
+      return bin2hex(openssl_random_pseudo_bytes(32));
     }
   }
 ?>

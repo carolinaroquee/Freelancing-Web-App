@@ -9,7 +9,13 @@
     <html>
         <head>
             <title>Bright Minds</title>
-            <link rel="stylesheet" href="">
+            <meta
+                name="LTW Project"
+                enconding= "utf-8"
+                author= "Ana Alves, Carolina Roque, Mateus Guerra"
+            >
+            <link rel="stylesheet" href="../css/style.css">
+            <link rel="stylesheet" href="../css/profile.css">
         </head>                  
         <body>
             <header>
@@ -28,7 +34,10 @@
                     <?php } ?>
                 </section>
             </header>
+            <main>
 <?php } ?>
+
+
 
 <?php function drawVisitorNav() { ?>
     <ul class="nav-links">
@@ -50,38 +59,9 @@
     </div>
 <?php } ?>
 
-<?php function drawEditProfile(User $user){ ?>
-    <main>  
-        <h2>Profile</h2>
-        <form action="../actions/action_edit_profile.php" method="post" class="profile">
-            <label for="name">Name:</label>
-            <input id="name" type="text" name="name" value="<?=$user->name?>">
-                
-            <label for="username">Username:</label>
-            <input id="username" type="text" name="username" value="<?=$user->username?>">
-
-            <label for="email">Email:</label>
-            <input id="email" type="text" name="email" value="<?=$user->email?>">
-            
-            <label for= "address">Address:</label>
-            <input id= "address" type= "text" name= "address" value = "<?=$user->address?>">
-            
-            <label for= "city">City:</label>
-            <input id= "city" type= "text" name= "city" value = "<?=$user->city?>">
-            
-            <label for= "postal_code">Postal Code:</label>
-            <input id= "postal_code" type= "text" name= "postal_code" value = "<?=$user->postal_code?>">
-            
-            <label for= "birth_data">Birth Date:</label>
-            <input id= "birth_data" type= "text" name= "birth_data" value = "<?=$user->birth_data?>">
-            
-            <button type="submit">Save</button>
-        </form> 
-    </main> 
-<?php }?>
     
 <?php function drawMainPage(Session $session, array $categories){ ?>
-    <main>
+    
         <section class="search-services">
             <h2>Learn from the best</h2>
             <form>
@@ -122,10 +102,12 @@
                 </button>
             </section>
         </section>
-    </main>
+    
 <?php } ?> 
 
 <?php function drawFooter(array $categories){ ?>
+
+            </main>
             <footer>
                 <div class="footer-content">
                     <section class="footer-column">
@@ -203,9 +185,10 @@
                     <input type="email" name="email" placeholder="Email" required />
                     <input type="password" name="password" placeholder="Password" required />
                     <input type="password" name="confirm_password" placeholder="Password confirmation" required />
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <button type="submit">Create Account</button>
                 </form>
-                <p class="login-text">Already have an account? <a href="../pages/login.php"> Join here</a></p>
+                <p class="login-text">Already have an account? <a href="../pages/login.php">Sign in here</a></p>
             </section> 
         </body>
     </html>
@@ -235,6 +218,7 @@
                 <form action="../actions/action_login.php" method="post"> 
                     <input type="text" name="username" placeholder="Username" required />
                     <input type="password" name="password" placeholder="Password" required />
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <button type="submit">Login</button> 
                 </form>
                 <p> or sign in with </p>

@@ -25,14 +25,14 @@ CREATE TABLE User (
     user_id INTEGER PRIMARY KEY,
     username TEXT UNIQUE NOT NULL,
     name TEXT NOT NULL,
-    birth_data DATE,
+    birth_date DATE,
     email TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL,
     usertype TEXT CHECK(usertype IN ('estudante', 'explicador', 'admin')) NOT NULL,
     address TEXT,
     postal_code TEXT,
     city TEXT,
-    data_registo DATE NOT NULL
+    registration_date DATE NOT NULL
 );
 
 CREATE TABLE Freelancer (

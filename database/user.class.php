@@ -9,21 +9,21 @@
     public string $email;
     public string $password; 
     public string $user_type;
-    public string $data_registo;
-    public ?string $birth_data;
+    public string $registration_date;
+    public ?string $birth_date;
     public ?string $address;
     public ?string $postal_code;
     public ?string $city;
 
-    public function __construct(int $id, string $username, string $name, string $email, string $password, string $user_type, string $data_registo, ?string $birth_data, ?string $address, ?string $postal_code, ?string $city) { 
+    public function __construct(int $id, string $username, string $name, string $email, string $password, string $user_type, string $registration_date, ?string $birth_date, ?string $address, ?string $postal_code, ?string $city) { 
       $this->id = $id;
       $this->username = $username;
       $this->name= $name;
       $this->email = $email;
       $this->password= $password;
       $this->user_type= $user_type;
-      $this->data_registo = $data_registo;
-      $this->birth_data= $birth_data;
+      $this->registration_date = $registration_date;
+      $this->birth_date= $birth_date;
       $this->address = $address;
       $this->postal_code = $postal_code;
       $this->city=$city;
@@ -36,13 +36,13 @@
 
     function save($db) {
 
-      $stmt = $db->prepare('INSERT INTO User (username, name, email, password, usertype, data_registo) VALUES (:username,:name, :email, :password,:usertype,:data)');
+      $stmt = $db->prepare('INSERT INTO User (username, name, email, password, usertype, registration_date) VALUES (:username,:name, :email, :password,:usertype,:registration_date)');
       $stmt->bindParam(':username', $this->username);
       $stmt->bindParam(':name', $this->name);
       $stmt->bindParam(':email', $this->email);
       $stmt->bindParam(':password', $this->password);
       $stmt->bindParam(':usertype', $this->user_type);
-      $stmt->bindParam(':data', $this->data_registo);
+      $stmt->bindParam(':registration_date', $this->registration_date);
   
       $stmt->execute(); 
     }
@@ -63,8 +63,8 @@
           $user['email'],
           $user['password'],
           $user['usertype'],
-          $user['data_registo'],
-          $user['birth_data'],
+          $user['registration_date'],
+          $user['birth_date'],
           $user['address'],
           $user['postal_code'],
           $user['city']
@@ -89,8 +89,8 @@
           $user['email'],
           $user['password'],
           $user['usertype'],
-          $user['data_registo'],
-          $user['birth_data'],
+          $user['registration_date'],
+          $user['birth_date'],
           $user['address'],
           $user['postal_code'],
           $user['city']
@@ -113,8 +113,8 @@
           $user['email'],
           $user['password'],
           $user['usertype'],
-          $user['data_registo'],
-          $user['birth_data'],
+          $user['registration_date'],
+          $user['birth_date'],
           $user['address'],
           $user['postal_code'],
           $user['city']
@@ -124,11 +124,11 @@
 
     function update(PDO $db){
       $stmt = $db->prepare('
-        UPDATE User SET username = ?,  name = ?, birth_data = ?, email = ?, address = ?, postal_code = ?, city = ?
+        UPDATE User SET username = ?,  name = ?, birth_date = ?, email = ?, address = ?, postal_code = ?, city = ?
         WHERE user_id = ?
       ');
 
-      $stmt->execute(array($this->name, $this->username, $this->birth_data,$this->email,$this->address,$this->postal_code,$this->city));
+      $stmt->execute(array($this->username, $this->name, $this->birth_date,$this->email,$this->address,$this->postal_code,$this->city,$this->id));
 
     }
 

@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Imperial+Script&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    font-family: "Roboto";
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+#editProfile {
+    font-family: 'Roboto', sans-serif;
+    margin: 100px auto;
+    max-width: 500px;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#editProfile h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+#editProfile form.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#editProfile label {
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 0.2rem;
+}
+
+#editProfile input[type="text"],
+#editProfile input[type="date"] {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+#editProfile input:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+#editProfile button[type="submit"] {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#editProfile button:hover {
+  background-color: #3a78c2;
+}
