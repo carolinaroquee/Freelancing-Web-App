@@ -9,8 +9,8 @@
     <html>
         <head>
             <title>Bright Minds</title>
-            <link rel="stylesheet" href="../css/style.css">
-        </head>
+            <link rel="stylesheet" href="">
+        </head>                  
         <body>
             <header>
                 <nav>
@@ -28,9 +28,6 @@
                     <?php } ?>
                 </section>
             </header>
-        </body> 
-    </html>
-
 <?php } ?>
 
 <?php function drawVisitorNav() { ?>
@@ -53,6 +50,36 @@
     </div>
 <?php } ?>
 
+<?php function drawEditProfile(User $user){ ?>
+    <main>  
+        <h2>Profile</h2>
+        <form action="../actions/action_edit_profile.php" method="post" class="profile">
+            <label for="name">Name:</label>
+            <input id="name" type="text" name="name" value="<?=$user->name?>">
+                
+            <label for="username">Username:</label>
+            <input id="username" type="text" name="username" value="<?=$user->username?>">
+
+            <label for="email">Email:</label>
+            <input id="email" type="text" name="email" value="<?=$user->email?>">
+            
+            <label for= "address">Address:</label>
+            <input id= "address" type= "text" name= "address" value = "<?=$user->address?>">
+            
+            <label for= "city">City:</label>
+            <input id= "city" type= "text" name= "city" value = "<?=$user->city?>">
+            
+            <label for= "postal_code">Postal Code:</label>
+            <input id= "postal_code" type= "text" name= "postal_code" value = "<?=$user->postal_code?>">
+            
+            <label for= "birth_data">Birth Date:</label>
+            <input id= "birth_data" type= "text" name= "birth_data" value = "<?=$user->birth_data?>">
+            
+            <button type="submit">Save</button>
+        </form> 
+    </main> 
+<?php }?>
+    
 <?php function drawMainPage(Session $session, array $categories){ ?>
     <main>
         <section class="search-services">
@@ -95,64 +122,58 @@
                 </button>
             </section>
         </section>
+    </main>
 <?php } ?> 
 
 <?php function drawFooter(array $categories){ ?>
-        
-        </main>
-        <footer>
-            <div class="footer-content">
-                <section class="footer-column">
-                    <h3>About</h3>
-                    <ul>
-                        <li><a href="">Who we are?</a></li>
-                        <li><a href="">Legal Notice</a></li>
-                        <li><a href="">Privacy Policy</a></li>
-                        <li><a href="">Districts</a></li>
-                        <li><a href="">Work with us</a></li>
-                    </ul>
-                </section>
-                <section class="footer-column">
-                    <h3>Categories</h3>
-                    <ul>
-                        <?php foreach($categories as $category){ ?>
-                            <li>
-                                <a href=""><?=$category['category_name']?>
-                                </a>
-                            </li>
-                        <?php } ?>
-        
-                    </ul>
-                </section>
-                <section class="footer-column">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </section>
-
-                <section class="footer-column">
-                    <h3>Follow us</h3>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </section>
-                <div class="footer-bottom">
-                    <hr>
-                    <p>© 2025 Bright Minds, where curious minds meet brilliant teachers.</p>
-                </div>
-                
-            </div>
+            <footer>
+                <div class="footer-content">
+                    <section class="footer-column">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="">Who we are?</a></li>
+                            <li><a href="">Legal Notice</a></li>
+                            <li><a href="">Privacy Policy</a></li>
+                            <li><a href="">Districts</a></li>
+                            <li><a href="">Work with us</a></li>
+                        </ul>
+                    </section>
+                    <section class="footer-column">
+                        <h3>Categories</h3>
+                        <ul>
+                            <?php foreach($categories as $category){ ?>
+                                <li>
+                                    <a href=""><?=$category['category_name']?>
+                                    </a>
+                                </li>
+                            <?php } ?>
             
-                
-          
-                
-        </footer>
-    </body>
-</html>
+                        </ul>
+                    </section>
+                    <section class="footer-column">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </section>
+
+                    <section class="footer-column">
+                        <h3>Follow us</h3>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </section>
+                    <div class="footer-bottom">
+                        <hr>
+                        <p>© 2025 Bright Minds, where curious minds meet brilliant teachers.</p>
+                    </div>
+                </div>   
+            </footer>
+        </body>
+    </html>
 <?php } ?>
 
 <?php function drawSignUp(Session $session){ ?>
@@ -228,29 +249,3 @@
     </html>
 
 <?php } ?>
-
-<?php function drawEditProfile(User $user){ ?>
-    <!DOCTYPE html>
-    <html>
-        <h2>Profile</h2>
-        <form action="../actions/action_edit_profile.php" method="post" class="profile">
-
-        <label for="name">Name:</label>
-        <input id="name" type="text" name="Name" value="<?=$user->name?>">
-        
-        <label for="username">Username:</label>
-        <input id="username" type="text" name="Username" value="<?=$user->username?>">
-
-        <label for="email">Email:</label>
-        <input id="email" type="text" name="Email" value="<?=$user->email?>">
-
-        <label for="user_type">User_type:</label>
-        <input id="user_type" type="text" name="User_type" value="<?=$user->user_type?>">
-
-        <label for="data_registo">Data Registo:</label>
-        <input id="data_registo" type="text" name="Data_registo" value="<?=$user->data_registo?>">
-        
-        <button type="submit">Save</button>
-        </form>
-    </html>    
-<?php }?>

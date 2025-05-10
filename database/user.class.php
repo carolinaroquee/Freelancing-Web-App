@@ -121,6 +121,17 @@
         );
     } 
 
+
+    function update(PDO $db){
+      $stmt = $db->prepare('
+        UPDATE User SET username = ?,  name = ?, birth_data = ?, email = ?, address = ?, postal_code = ?, city = ?
+        WHERE user_id = ?
+      ');
+
+      $stmt->execute(array($this->name, $this->username, $this->birth_data,$this->email,$this->address,$this->postal_code,$this->city));
+
+    }
+
     /*tentativa da função para ir buscar a foto de perfil
     function getPhoto() : string {
       $default = "../docs/default_profile_image.png";
