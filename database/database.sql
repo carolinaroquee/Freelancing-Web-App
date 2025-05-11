@@ -116,3 +116,9 @@ INSERT INTO Category VALUES('Portuguese');
 INSERT INTO Category VALUES('English');
 
 
+ALTER TABLE Service ADD COLUMN max_students INTEGER;  
+
+ALTER TABLE Freelancer ADD COLUMN university TEXT;
+ALTER TABLE Freelancer ADD COLUMN course TEXT;
+ALTER TABLE Freelancer ADD COLUMN languages TEXT;
+ALTER TABLE Freelancer ADD COLUMN profession TEXT;

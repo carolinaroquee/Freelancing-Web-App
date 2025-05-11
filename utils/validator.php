@@ -1,6 +1,6 @@
 <?php 
 declare(strict_types = 1);
-require_once(dirname(__DIR__).'/classes/session.class.php');
+require_once(__DIR__.':/utils/session.php');
 
 function valid_name(string $attempt): bool {
     if (!preg_match("/^[a-zA-Z\s]+$/", $attempt)) {

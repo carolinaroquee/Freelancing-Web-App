@@ -41,7 +41,7 @@
 
 <?php function drawVisitorNav() { ?>
     <ul class="nav-links">
-        <li><a href="">Become a Seller</a></li>
+        <li><a href="../pages/sign_up.php">Become a Seller</a></li>
         <li><a href="../pages/login.php">Sign In</a></li>
         <li><a href="../pages/sign_up.php" class="join-btn">Join</a></li>
     </ul>
@@ -51,6 +51,9 @@
 
 <?php function drawUserNav(Session $session) { ?>
     <div class="nav-right">
+        
+        <a href="../pages/become_freelancer.php">Become a Seller</a>
+
         <form action="../actions/action_logout.php" method="post">
             <button type="submit" class="logout-btn">Logout</button>
         </form>
