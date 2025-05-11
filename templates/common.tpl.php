@@ -1,6 +1,8 @@
 <?php
     require_once(__DIR__. '/../utils/session.php');
     require_once(__DIR__.'/../database/user.class.php');
+
+
 ?>
 
 <?php function drawHeader(Session $session){ ?>
@@ -41,7 +43,7 @@
 
 <?php function drawVisitorNav() { ?>
     <ul class="nav-links">
-        <li><a href="../pages/sign_up.php">Become a Seller</a></li>
+        <li><a href="../pages/sign_up.php">Become a Tutor</a></li>
         <li><a href="../pages/login.php">Sign In</a></li>
         <li><a href="../pages/sign_up.php" class="join-btn">Join</a></li>
     </ul>
@@ -51,9 +53,13 @@
 
 <?php function drawUserNav(Session $session) { ?>
     <div class="nav-right">
+        <?php if($session->getUserType()==='student'){ ?>
+            <a href="../pages/become_freelancer.php">Become a Tutor</a>
+        <?php } else{ ?>
+            <a href="../pages/">Add Service</a>
+        <?php } ?>
         
-        <a href="../pages/become_freelancer.php">Become a Seller</a>
-
+        
         <form action="../actions/action_logout.php" method="post">
             <button type="submit" class="logout-btn">Logout</button>
         </form>

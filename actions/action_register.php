@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
-    $user_type= 'estudante';
+    $user_type= 'student';
     $data = date('Y-m-d');
 
     if ($password !== $confirm_password) {
@@ -35,15 +35,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    $user_id = $db->lastInsertId();  
+   
 
-    $user = new User($user_id,$username,$name,$email,$hashed_password,$user_type,$data,null, null,null,null);
+    $user = new User(0,$username,$name,$email,$hashed_password,$user_type,$data,null, null,null,null);
     $user->save($db);
 
-   $session->setId($user_id);
-   $session->setUsername($username);
-   $session->setName($name);
-   $session->addMessage('sucess','Account created successfully!');
+    $user_id = $db->lastInsertId();  
+
+    $session->setId($user_id);
+    $session->setUsername($username);
+    $session->setName($name);
+    $session->setUserType($user_type);
+    $session->addMessage('sucess','Account created successfully!');
 
     header("Location:../pages/index.php");
     exit;

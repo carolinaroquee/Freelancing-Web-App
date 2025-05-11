@@ -45,6 +45,8 @@
       $stmt->bindParam(':registration_date', $this->registration_date);
   
       $stmt->execute(); 
+
+      $this->id = (int)$db->lastInsertId(); // atualiza dentro do próprio objeto
     }
 
     static function getUserWithPassword(PDO $db, string $username, string $password) : ?User {
@@ -129,6 +131,16 @@
       ');
 
       $stmt->execute(array($this->username, $this->name, $this->birth_date,$this->email,$this->address,$this->postal_code,$this->city,$this->id));
+
+    }
+
+    function updateUserType(PDO $db){
+      $stmt = $db->prepare('
+        UPDATE User SET usertype= ?
+        WHERE user_id = ?
+      ');
+
+      $stmt->execute(array($this->user_type, $this->id));
 
     }
 

@@ -42,6 +42,14 @@
     public function setUsername(string $username) {
       $_SESSION['Username'] = $username;
     }
+    
+    public function setUserType(string $user_type){
+      $_SESSION['user_type']= $user_type;
+    }
+
+    public function getUserType() : ?string {
+      return isset($_SESSION['user_type']) ? $_SESSION['user_type'] : null;
+    }
 
     public function addMessage(string $type, string $text) {
       $_SESSION['messages'][] = array('type' => $type, 'text' => $text);

@@ -12,6 +12,7 @@
         $session->setId($user->id);
         $session->setName($user->name);
         $session->setUsername($user->username);
+        $session->setUserType($user->user_type);
         $session->addMessage('success', 'Login successful!');
         header('Location: ../pages/index.php');  
     }

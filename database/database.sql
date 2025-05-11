@@ -28,7 +28,7 @@ CREATE TABLE User (
     birth_date DATE,
     email TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL,
-    usertype TEXT CHECK(usertype IN ('estudante', 'explicador', 'admin')) NOT NULL,
+    usertype TEXT CHECK(usertype IN ('student', 'tutor', 'admin')) NOT NULL,
     address TEXT,
     postal_code TEXT,
     city TEXT,
@@ -37,7 +37,11 @@ CREATE TABLE User (
 
 CREATE TABLE Freelancer (
     freelancer_id INTEGER PRIMARY KEY,
-    biography TEXT,
+    biography VARCHAR(500) NOT NULL,
+    university VARCHAR(100),
+    course VARCHAR(100),
+    languages VARCHAR(100),
+    profession VARCHAR(100),
     FOREIGN KEY (freelancer_id) REFERENCES Users(user_id) ON DELETE CASCADE ON UPDATE CASCADE 
 );
 
@@ -71,6 +75,7 @@ CREATE TABLE Service(
     service_type TEXT CHECK(service_type IN ('individual presencial', 'grupo presencial', 'individual online','grupo online', 'revisão trabalhos')) NOT NULL,
     num_sessoes INTEGER NOT NULL,
     status TEXT CHECK(status IN ('ativo', 'inativo')) DEFAULT 'ativo',
+    max_students INTEGER,
     FOREIGN KEY (freelancer_id) REFERENCES Freelancers(freelancer_id) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (category_name) REFERENCES Category(category_name) ON UPDATE CASCADE ON DELETE RESTRICT
 );
@@ -114,11 +119,3 @@ INSERT INTO Category VALUES('Math');
 INSERT INTO Category VALUES('Science');
 INSERT INTO Category VALUES('Portuguese');
 INSERT INTO Category VALUES('English');
-
-
-ALTER TABLE Service ADD COLUMN max_students INTEGER;  
-
-ALTER TABLE Freelancer ADD COLUMN university TEXT;
-ALTER TABLE Freelancer ADD COLUMN course TEXT;
-ALTER TABLE Freelancer ADD COLUMN languages TEXT;
-ALTER TABLE Freelancer ADD COLUMN profession TEXT;
