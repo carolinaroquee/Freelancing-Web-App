@@ -2,7 +2,6 @@
 
 *{
     font-family: "Roboto";
-    /*font-style: normal;*/
     margin:0;
     padding:0;
     box-sizing: border-box;
@@ -25,10 +24,10 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0px 30px;
+    padding: 5px 35px;
 }
 
-.nav-links {
+.visitor-nav-links {
     list-style: none;
     display: flex;
     align-items: center;
@@ -43,7 +42,7 @@ a{
     text-decoration:none;
 }
 
-.nav-links li a, .nav-right a{
+.visitor-nav-links li a, .user-nav a{
     color: #333;
     font-weight: 600;
     font-size: 16px;
@@ -65,16 +64,62 @@ a{
 
 /* Nav-bar quando o utilizador está loged in*/
 
-.nav-right {
+.user-nav {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 50px;
+}
+.user-nav > a{
+    color: #333;
+    font-weight: 600;
+    font-size: 16px;
 }
 
-#profile{
+.profile-button{
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:0;
+}
+.profile-image{
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-dropdown {
+    position: relative;
+}
+
+#profile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 200px;
+   
+}
+
+#profile-menu a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    font-weight:500;
+    font-size: 14px;
+}
+
+#profile-menu a:hover {
+    color: #005fa3;
+}
+
+/* Exibe o menu quando a classe "active" é adicionada */
+.profile-dropdown.active #profile-menu {
+    display: block;
 }
 
 /* main page*/

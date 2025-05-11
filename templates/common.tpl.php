@@ -18,6 +18,7 @@
             >
             <link rel="stylesheet" href="../css/style.css">
             <link rel="stylesheet" href="../css/profile.css">
+            <script src="../javascript/script.js"> href</script>
         </head>                  
         <body>
             <header>
@@ -42,7 +43,7 @@
 
 
 <?php function drawVisitorNav() { ?>
-    <ul class="nav-links">
+    <ul class="visitor-nav-links">
         <li><a href="../pages/sign_up.php">Become a Tutor</a></li>
         <li><a href="../pages/login.php">Sign In</a></li>
         <li><a href="../pages/sign_up.php" class="join-btn">Join</a></li>
@@ -52,19 +53,27 @@
 
 
 <?php function drawUserNav(Session $session) { ?>
-    <div class="nav-right">
+    <div class="user-nav">
         <?php if($session->getUserType()==='student'){ ?>
             <a href="../pages/become_freelancer.php">Become a Tutor</a>
         <?php } else{ ?>
             <a href="../pages/">Add Service</a>
         <?php } ?>
         
-        
-        <form action="../actions/action_logout.php" method="post">
+        <div class="profile-dropdown">
+            <button type="button" class="profile-button" onclick="toggleProfileMenu()">
+                <img src="../docs/default_profile_image.png" alt="Profile image" class="profile-image">
+            </button>
+            <div id='profile-menu'>
+                <a href="../pages/profile.php">Profile</a>
+                <a href="../actions/action_logout.php">Logout</a>
+            </div>
+        </div> 
+        <!--<form action="../actions/action_logout.php" method="post">
             <button type="submit" class="logout-btn">Logout</button>
         </form>
         <a href="../pages/profile.php"><Profile></a>
-        <a href="../pages/profile.php" ><img src="../docs/default_profile_image.png" alt="profile image" id="profile"></a>
+        <a href="../pages/profile.php" ><img src="../docs/default_profile_image.png" alt="profile image" id="profile"></a>-->
     </div>
 <?php } ?>
 

@@ -4,20 +4,19 @@ require_once(__DIR__ . '/../database/connection.db.php');
 
 $session = new Session();
 if (!$session->isLoggedIn()) {
-    header('Location: login.php');
-    exit();
+  header("Location: ../pages/sign_up.php");
 }
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>>
-  <title>Become a Freelancer</title>
+  <title>Become a Tutor</title>
   <link rel="stylesheet" href="../css/profile.css">
 </head>
 <body>
   <div id="editProfile">
-    <h2>Become a Freelancer</h2>
+    <h2>Become a Tutor</h2>
     <form class="profile" action="../actions/action_become_freelancer.php" method="POST">
       <label for="biography">Biography:</label>
       <textarea name="biography" rows="4" required></textarea>
