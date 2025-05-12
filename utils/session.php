@@ -28,7 +28,7 @@
     }
 
     public function getUsername() : ?string {
-      return isset($_SESSION['Username']) ? $_SESSION['Username'] : null;
+      return isset($_SESSION['username']) ? $_SESSION['Username'] : null;
     }
 
     public function setId(int $id) {

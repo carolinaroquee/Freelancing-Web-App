@@ -1,41 +1,20 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../database/connection.db.php');
+require_once(__DIR__ . '/../templates/common.tpl.php');
+
 
 $session = new Session();
 if (!$session->isLoggedIn()) {
+  $_SESSION['redirect_after_signup'] =  '../pages/become_freelancer.php';
   header("Location: ../pages/sign_up.php");
+  exit();
 }
+
+become_tutor_form($session);
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>>
-  <title>Become a Tutor</title>
-  <link rel="stylesheet" href="../css/profile.css">
-</head>
-<body>
-  <div id="editProfile">
-    <h2>Become a Tutor</h2>
-    <form class="profile" action="../actions/action_become_freelancer.php" method="POST">
-      <label for="biography">Biography:</label>
-      <textarea name="biography" rows="4" required></textarea>
-
-      <label for="university">University (optional):</label>
-      <input type="text" name="university">
-
-      <label for="course">Course (optional):</label>
-      <input type="text" name="course">
-
-      <label for="languages">Languages Spoken:</label>
-      <input type="text" name="languages" required>
-
-      <label for="profession">Profession:</label>
-      <input type="text" name="profession" required>
-
-      <input type="hidden" name="csrf" value="<?= $_SESSION['csrf'] ?>">
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-</body>
-</html>
