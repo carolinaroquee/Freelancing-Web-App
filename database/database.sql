@@ -76,6 +76,7 @@ CREATE TABLE Service(
     num_sessoes INTEGER NOT NULL,
     status TEXT CHECK(status IN ('ativo', 'inativo')) DEFAULT 'ativo',
     max_students INTEGER,
+    images TEXT, -- tipo text porque estou a amarzenar o path onde as imagens estão armazenadas 
     FOREIGN KEY (freelancer_id) REFERENCES Freelancers(freelancer_id) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (category_name) REFERENCES Category(category_name) ON UPDATE CASCADE ON DELETE RESTRICT
 );
