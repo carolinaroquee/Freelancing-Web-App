@@ -335,6 +335,9 @@
         <label for="max_students">Max Students (group services only):</label>
         <input type="number" name="max_students" min="1" placeholder="Optional">
 
+        <label for="service_images">Upload Images:</label>
+        <input type="file" name="service_images[]" id="service-images" accept="image/*" multiple> <!-- Permite múltiplos arquivos de imagem -->
+
         <button type="submit" class="submit-btn">Publish Service</button>
     </form>
 </section>
