@@ -100,8 +100,8 @@
             <section class="categories">
                 <h2>Explore categories</h2>
                 <?php foreach($categories as $category){ ?>
-                    <a href="../pages/services_list.php">
-                        <button type = "submit"> <?=$category['category_name']?> </button>
+                    <a href="../pages/services_list.php?category=<?=$category['category_name']?>">
+                        <button type = "button"> <?=$category['category_name']?> </button>
                     </a>
                 <?php } ?>
             </section>

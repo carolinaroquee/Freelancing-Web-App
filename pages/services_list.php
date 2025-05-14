@@ -9,7 +9,8 @@
     $session = new Session();
     $db = getDatabaseConnection();
     $categories = getAllCategories($db);
-    $services = getAllServices($db);
+    $category = $_GET['category'];
+    $services = getServicesbyCategory($db,$category);
 
     drawHeader($session);
     drawServices($services);

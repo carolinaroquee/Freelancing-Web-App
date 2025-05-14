@@ -46,8 +46,9 @@
     }
 
 } 
-    function getAllServices($db) {
-        $stmt = $db->prepare('SELECT * FROM Service');              
+    function getServicesbyCategory(PDO $db, string $category) {
+        $stmt = $db->prepare('SELECT * FROM Service WHERE category_name = :category ');   
+        $stmt->bindParam(':category', $category);           
         $stmt->execute();
 
         return $stmt->fetchAll();
