@@ -1,0 +1,11 @@
+#services {
+  margin-top: 100px;  /* ou o valor da altura do header + algum espaçamento extra */
+  margin-bottom: 80px; /* se tiveres um footer fixo */
+  padding: 20px;
+}
+
+.service-button {
+  align-items: center;
+  padding: 10px;
+  margin: 10px 0;
+}

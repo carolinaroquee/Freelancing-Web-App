@@ -16,6 +16,7 @@
             >
             <link rel="stylesheet" href="../css/style.css">
             <link rel="stylesheet" href="../css/profile.css">
+            <link rel="stylesheet" href="../css/services.css">
             <script src="../javascript/script.js"> href</script>
         </head>                  
         <body>

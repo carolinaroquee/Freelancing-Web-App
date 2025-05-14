@@ -12,7 +12,6 @@
         <form class="add-service-form" action="../actions/action_add_service.php" method="POST">
             <label for="title">Title:</label>
             <input type="text" name="title" required>
-
             <label for="category">Category:</label>
             <select name="category_name" required>
                 <?php foreach ($categories as $category): ?>
@@ -57,8 +56,17 @@
 
 
 <?php function drawServices(array $services){ ?>
-    <h2>Services Available</h2>
-    <?php foreach ($services as $service){?>
-        <h2><?php $service['title'] ?>      <?php $service['category_name'] ?></h2>
-    <?php } ?>
+    <section id="services">
+        <h2>Services Available</h2>
+    
+        <?php foreach ($services as $service){?>
+            
+            <button class = "service-button">
+                <img src= "<?= $service['images'] ?>" >
+                <span> <?= $service['title'] ?>: <?= $service['category_name']?> </span>
+            </button>
+        <?php } ?>
+
+    </section>
+
 <?php } ?>

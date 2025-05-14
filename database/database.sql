@@ -105,7 +105,6 @@ CREATE TABLE Transfer (
     FOREIGN KEY (booking_id) REFERENCES Booking(booking_id) ON DELETE RESTRICT ON UPDATE CASCADE /*On delete restrict impede de apagar o booking se houver uma transação associada*/
 );
 
--- Avaliações feitas após o serviço
 CREATE TABLE Review (
     review_id INTEGER PRIMARY KEY,
     booking_id INTEGER UNIQUE NOT NULL, 
@@ -114,7 +113,7 @@ CREATE TABLE Review (
     data_avaliacao DATE NOT NULL,
     FOREIGN KEY (booking_id) REFERENCES Booking(booking_id) ON DELETE RESTRICT ON UPDATE CASCADE /*On delete restrict bloqueia o apagamento da marcação se existir uma review associada.c*/
 );
-
+ 
 
 INSERT INTO Category VALUES('Math');
 INSERT INTO Category VALUES('Science');

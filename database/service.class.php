@@ -14,11 +14,11 @@
     public ?int $max_students;
     public ?string $images;
 
-    public function __construct(int $freelancer_id, string $title, string $category_name, string $description, int $price, string $service_type, int $num_sessoes, ?int $max_students, ?string $images) { 
-        $this->$freelancer_id = $freelancer_id;
+    public function __construct(int $freelancer_id, string $title, string $category_name, string $description, string $duracao, int $price, string $service_type, int $num_sessoes, ?int $max_students, ?string $images) { 
+        $this->freelancer_id = $freelancer_id;
         $this->title = $title;
         $this->category_name = $category_name;
-        $this->description = $duracao;
+        $this->description = $description;
         $this->duracao = $duracao;
         $this->price = $price;
         $this->service_type = $service_type;

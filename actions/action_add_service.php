@@ -10,11 +10,6 @@
     }
 
     $db = getDatabaseConnection();
-    $user_id = $session->getId();
-
-    // Garante que o user é freelancer
-    $stmt = $db->prepare('INSERT OR IGNORE INTO Freelancer (freelancer_id) VALUES (?)');
-    $stmt->execute([$user_id]);
 
     // Recolhe os dados do formulário
     $title = $_POST['title'];
@@ -66,7 +61,8 @@
     // Converte os caminhos das imagens para uma string separada por vírgulas
     $image_paths_str = implode(',', $image_paths);
 
-    $service = new Service($freelancer_id,$title,$category_name,$description,$duracao,$price,$service_type,$num_sessoes,$max_students,$images);
+    $freelancer_id = $session->getId();
+    $service = new Service($freelancer_id,$title,$category,$description,$duracao,$price,$service_type,$num_sessoes,$max_students,$images);
 
     $service->save($db);
 

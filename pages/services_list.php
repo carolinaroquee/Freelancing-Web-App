@@ -11,7 +11,7 @@
     $categories = getAllCategories($db);
     $services = getAllServices($db);
 
-    //drawHeader($session);
+    drawHeader($session);
     drawServices($services);
-    //drawFooter($categories); 
+    drawFooter($categories); 
 ?>

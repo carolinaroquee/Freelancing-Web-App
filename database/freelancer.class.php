@@ -21,7 +21,7 @@
 
     function save($db) {
       $stmt = $db->prepare('INSERT INTO Freelancer (freelancer_id, biography, university, course, languages, profession) VALUES (:freelancer_id,:biography, :university, :course,:languages,:profession)');
-      $stmt->bindParam(':freelancer_id', $this->freelancer_id);
+      $stmt->bindParam(':freelancer_id', $this->id);
       $stmt->bindParam(':biography', $this->biography);
       $stmt->bindParam(':university', $this->university);
       $stmt->bindParam(':course', $this->course);
