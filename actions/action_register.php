@@ -46,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $session->setUsername($username);
     $session->setName($name);
     $session->setUserType($user_type);
+    $session->setPhoto($user->getPhoto());
     $session->addMessage('sucess','Account created successfully!');
 
     // header("Location:../pages/index.php");

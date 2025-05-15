@@ -11,6 +11,6 @@
     $user = User::getUserbyId($db,intval($session->getId()));
     
     drawHeader($session);
-    drawEditProfile($user);
+    drawEditProfile($user, $session);
     drawFooter($categories);
 ?>

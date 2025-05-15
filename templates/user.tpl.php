@@ -2,7 +2,7 @@
   require_once(__DIR__. '/../utils/session.php');
   require_once(__DIR__.'/../database/user.class.php');
 ?>
-<?php function drawEditProfile(User $user){ ?> 
+<?php function drawEditProfile(User $user,Session $session){ ?> 
   <section id="editProfile">
     
     <h2>Profile</h2>
@@ -32,11 +32,13 @@
         <button type="submit">Save</button>
     </form>
 
-    <form action="../actions/uploadProfileImage.action.php" method="post" enctype="multipart/form-data">
+    <form action="../actions/action_uploadPhoto.php" method="post" enctype="multipart/form-data">
         <label>Profile Picture: <input type="file" name="image"></label>
         <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
         <input type="submit" value="Upload">
     </form>
+
+    <img src="<?= $session->getPhoto() ?>" alt="Profile image" >
 
   </section>
 <?php } ?>

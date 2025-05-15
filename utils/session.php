@@ -40,7 +40,7 @@
     }
 
     public function setUsername(string $username) {
-      $_SESSION['Username'] = $username;
+      $_SESSION['username'] = $username;
     }
     
     public function setUserType(string $user_type){
@@ -49,6 +49,14 @@
 
     public function getUserType() : ?string {
       return isset($_SESSION['user_type']) ? $_SESSION['user_type'] : null;
+    }
+
+    public function setPhoto(string $photo){
+      $_SESSION['photo']= $photo;
+    }
+
+    public function getPhoto(): ?string{
+      return isset($_SESSION['photo']) ? $_SESSION['photo'] : null;
     }
 
     public function addMessage(string $type, string $text) {

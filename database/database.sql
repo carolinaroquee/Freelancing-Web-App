@@ -32,7 +32,8 @@ CREATE TABLE User (
     address TEXT,
     postal_code TEXT,
     city TEXT,
-    registration_date DATE NOT NULL
+    registration_date DATE NOT NULL,
+    profile_image TEXT
 );
 
 CREATE TABLE Freelancer (

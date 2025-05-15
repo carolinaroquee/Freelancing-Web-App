@@ -13,7 +13,8 @@
         $session->setName($user->name);
         $session->setUsername($user->username);
         $session->setUserType($user->user_type);
-        $session->addMessage('success', 'Login successful!');
+        $session->setPhoto($user->getPhoto());
+        $session->addMessage('success', 'Login successful! Welcome back, '. $user->getName() . '!');
         header('Location: ../pages/index.php');  
     }
     else{

@@ -27,6 +27,7 @@
         $user->birth_date =$_POST['birth_date'];
 
         $user->update($db);
+        
         $session->setName($user->name);
     }
     header('Location: ' . $_SERVER['HTTP_REFERER']);

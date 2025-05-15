@@ -14,6 +14,7 @@
     public ?string $address;
     public ?string $postal_code;
     public ?string $city;
+  
 
     public function __construct(int $id, string $username, string $name, string $email, string $password, string $user_type, string $registration_date, ?string $birth_date, ?string $address, ?string $postal_code, ?string $city) { 
       $this->id = $id;
@@ -143,17 +144,23 @@
       $stmt->execute(array($this->user_type, $this->id));
 
     }
+    function updateProfileImage(PDO $db, string $fileName){
+      $stmt = $db->prepare('
+        UPDATE User SET profile_image = ?
+        WHERE user_id = ?
+      ');
 
-    /*tentativa da função para ir buscar a foto de perfil
+      $stmt->execute(array($fileName, $this->id));
+    }
+
     function getPhoto() : string {
-      $default = "../docs/default_profile_image.png";
-      $attemp = "";
-      if (file_exists(dirname(__DIR__).$attemp)) {
-        $_SESSION['photo'] = $attemp;
+
+      $default = "/docs/profile_img/default.png";
+      $attemp = "/docs/profile_img/profile$this->id.png";
+      if (file_exists(__DIR__.'/..'.$attemp)) {
         return $attemp;
       } else return $default;
-    }  */
+    }  
 
-    
   }
 ?>

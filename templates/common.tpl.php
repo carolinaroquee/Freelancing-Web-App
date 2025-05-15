@@ -61,7 +61,7 @@
         
         <div class="profile-dropdown">
             <button type="button" class="profile-button" onclick="toggleProfileMenu()">
-                <img src="../docs/default_profile_image.png" alt="Profile image" class="profile-image">
+                <img src="<?= $session->getPhoto() ?>" alt="Profile image" class="profile-image">
             </button>
             <div id='profile-menu'>
                 <a href="../pages/profile.php">Profile</a>
