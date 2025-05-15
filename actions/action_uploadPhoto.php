@@ -36,20 +36,34 @@
     die(header('Location: ../pages/profile.php'));
   }
 
-  $width = imagesx($img);  
-  $height = imagesy($img); 
-  $square = min($width, $height); 
-  $profile = imagecreatetruecolor(900, 900);
+  $width = imagesx($img);     // largura original
+  $height = imagesy($img);    // altura original
 
-  imagecopyresized(
-    $profile, $img, 0, 0, 
-    ($width>$square) ? intval(($width-$square)/2):0,
-    ($height>$square)?intval(($height-$square)/2):0,
-    $square, $square, $square, $square
+  // 1. Lado do maior quadrado possível dentro da imagem
+  $square = min($width, $height);
+
+  // 2. Coordenadas de onde começar o corte (para centrar)
+  $src_x = intval(($width - $square) / 2);
+  $src_y = intval(($height - $square) / 2);
+
+  // 3. Tamanho final desejado do avatar (opcional, aqui é 300x300)
+  $finalSize = 300;
+
+  // 4. Criar imagem nova
+  $profile = imagecreatetruecolor($finalSize, $finalSize);
+
+  // 5. Copiar o quadrado da imagem original, redimensionando se necessário
+  imagecopyresampled(
+    $profile,        // destino
+    $img,            // origem
+    0, 0,            // destino x, y
+    $src_x, $src_y,  // origem x, y (centrado)
+    $finalSize, $finalSize,  // tamanho destino
+    $square, $square         // tamanho origem (corte quadrado)
   );
 
+  // 6. Guardar imagem
   imagepng($profile, $fileName);
-
 
 
   $db = getDatabaseConnection();
