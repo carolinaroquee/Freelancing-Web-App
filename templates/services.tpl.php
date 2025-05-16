@@ -45,9 +45,7 @@
             <label for="max_students">Max Students (group services only):</label>
             <input type="number" name="max_students" min="1" placeholder="Optional">
 
-            <label for="service_images">Upload Images:</label>
-            <input type="file" name="service_images[]" id="service-images" accept="image/*" multiple> <!-- Permite múltiplos arquivos de imagem -->
-
+        
             <button type="submit" class="submit-btn">Publish Service</button>
         </form>
     </section>
@@ -58,15 +56,37 @@
 <?php function drawServices(array $services){ ?>
     <section id="services">
         <h2>Services Available</h2>
-    
-        <?php foreach ($services as $service){?>
-            
-            <button class = "service-button">
-                <img src= "<?= $service['images'] ?>" >
-                <span> <?= $service['title'] ?>: <?= $service['category_name']?> </span>
-            </button>
-        <?php } ?>
-
+        <div class="services-button">
+            <?php foreach ($services as $service) { 
+                $profileImage = $service['profile_image']; // Caminho da imagem
+            ?>
+                <div class="service-card">
+                    <!-- Exibe a imagem do freelancer -->
+                    <div class="service-img-container">
+                        <img class="profile-photo" src="<?= htmlspecialchars($profileImage) ?>" alt="Foto de <?= htmlspecialchars($service['freelancer_name']) ?>">
+                    </div>
+                    <div class="service-details">
+                        <p class="service-name"><h3><?= htmlspecialchars($service['title']) ?><h3>
+                        <p class="service-description"><?= htmlspecialchars($service['description']) ?>                           
+                        <p class="freelancer-name">@<?= htmlspecialchars($service['freelancer_name']) ?></p>
+                        <p class="price">€<?= number_format($service['price'], 2) ?></p>
+                        <p class="rating">
+                            <?php 
+                            $avg = round($service['avg_rating'], 1);
+                            if ($avg) {
+                                echo $avg . " ★";
+                            } else {
+                                echo "No avaliations";
+                            }
+                            ?>
+                        </p>
+                        <button class="view-service-btn">View Service</button>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
     </section>
-
 <?php } ?>
+
+
+
