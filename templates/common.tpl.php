@@ -17,7 +17,9 @@
             <link rel="stylesheet" href="../css/style.css">
             <link rel="stylesheet" href="../css/profile.css">
             <link rel="stylesheet" href="../css/services.css">
+            <link rel="stylesheet" href="../css/service_detail.css" />
             <script src="../javascript/script.js"> href</script>
+            <script src="../javascript/validation_dates.js"></script>
         </head>                  
         <body>
             <header>

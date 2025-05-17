@@ -76,11 +76,11 @@
                             if ($avg) {
                                 echo $avg . " ★";
                             } else {
-                                echo "No avaliations";
+                                echo "No reviews";
                             }
                             ?>
                         </p>
-                        <button class="view-service-btn">View Service</button>
+                        <a href="service_detail.php?id=<?= $service['service_id'] ?>" class="view-service-btn">View Service</a>
                     </div>
                 </div>
             <?php } ?>
@@ -90,3 +90,58 @@
 
 
 
+<?php function drawServiceDetail($service, $freelancer, $reviews) { ?>
+<section id="service-detail">
+  <h1><?= htmlspecialchars($service->title) ?></h1>
+
+  <div class="freelancer-info">
+    <img src="<?= htmlspecialchars($freelancer->getPhoto()) ?>" alt="Photo of <?= htmlspecialchars($freelancer->name) ?>" />
+    <h2><?= htmlspecialchars($freelancer->name) ?></h2>
+    <p><?= nl2br(htmlspecialchars($freelancer->biography ?? '')) ?></p>
+  </div>
+
+  <div class="service-info">
+    <p><strong>Description:</strong> <?= nl2br(htmlspecialchars($service->description)) ?></p>
+    <p><strong>Duration:</strong> <?= htmlspecialchars($service->duracao) ?> minutos</p>
+    <p><strong>Price:</strong> €<?= number_format($service->price, 2) ?></p>
+    <p><strong>Type of service:</strong> <?= htmlspecialchars($service->service_type) ?></p>
+    <p><strong>Number of sessions:</strong> <?= htmlspecialchars($service->num_sessoes) ?></p>
+  </div>
+
+  <div class="booking-form">
+    <h3>Mark Service</h3>
+    <form action="../actions/action_booking.php" method="POST">
+      <input type="hidden" name="service_id" value="<?= $service->service_id ?>" />
+      <?php for ($i = 1; $i <= $service->num_sessoes; $i++): ?>
+      <label for="date<?= $i ?>">Date of session <?= $i ?>:</label>
+      <input type="date" id="date<?= $i ?>" name="dates[]" required />
+    <?php endfor; ?>
+
+      <label for="payment_method">Payment method:</label>
+      <select name="payment_method" id="payment_method" required>
+        <option value="MBWAY">MBWAY</option>
+        <option value="VISA">VISA</option>
+        <option value="PayPal">PayPal</option>
+        <option value="Apple Pay">Apple Pay</option>
+      </select>
+
+      <button type="submit">Confirm reservation</button>
+    </form>
+  </div>
+
+  <div class="reviews">
+    <h3>Reviews</h3>
+    <?php if (count($reviews) === 0) { ?>
+      <p>No reviews yet.</p>
+    <?php } else {
+      foreach ($reviews as $review) { ?>
+        <div class="review">
+          <p><strong>Rating:</strong> <?= htmlspecialchars($review->rating) ?> ★</p>
+          <p><?= nl2br(htmlspecialchars($review->comment)) ?></p>
+          <small>Data: <?= htmlspecialchars($review->data_avaliacao) ?></small>
+        </div>
+    <?php }
+    } ?>
+  </div>
+</section>
+<?php } ?>
