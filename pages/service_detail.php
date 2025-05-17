@@ -25,7 +25,7 @@ $service_id = intval($_GET['id']);
 
 $service = Service::getServiceById($db, $service_id);
 if (!$service) {
-    echo "Serviço não encontrado";
+    echo "Service not found";
     exit;
 }
 

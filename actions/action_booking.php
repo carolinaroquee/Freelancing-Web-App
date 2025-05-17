@@ -17,12 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$cliente_id, $service_id, $date, 'pendente']);
         $booking_id = intval($db->lastInsertId());
 
-        // Busca preço para a transação
+        
         $stmtPrice = $db->prepare('SELECT price FROM Service WHERE service_id = ?');
         $stmtPrice->execute([$service_id]);
         $price = $stmtPrice->fetchColumn();
 
-        // Insere a transação associada a esse booking
+        
         $stmt2 = $db->prepare('INSERT INTO Transfer (booking_id, valor, data_transacao, metodo_pagamento) VALUES (?, ?, ?, ?)');
         $stmt2->execute([$booking_id, $price, date('Y-m-d'), $payment_method]);
     }
