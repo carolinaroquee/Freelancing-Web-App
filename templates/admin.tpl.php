@@ -14,14 +14,24 @@
 
                 <input type="submit" value="Add Category">
             </form>
-            <section id="messages">
+        </article>
+        <article id="remove-category">
+            <h2>Remove Category</h2>
+
+            <form action="../actions/action_remove_category.php" method="POST">
+                <label for="name">Category Name:</label>
+                <input id="name" type="text" name="name" required >
+
+                <input type="submit" value="Remove Category">
+            </form>
+        </article>
+        <section id="messages">
                 <?php foreach ($session->getMessages() as $messsage) { ?>
                     <article class="<?=$messsage['type']?>">
                         <?=$messsage['text']?>
                     </article>
                 <?php } ?>
-            </section>
-        </article>
+        </section>
     </section>
 
 <?php } ?>

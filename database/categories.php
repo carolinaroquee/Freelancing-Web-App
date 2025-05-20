@@ -20,4 +20,10 @@
     $stmt->execute([$name]);
   }
 
+  function removeCategory(PDO $db, string $name){
+    $stmt = $db->prepare('DELETE FROM Category WHERE category_name = ?');
+    return $stmt->execute([$name]);
+  }
+
+
 ?>

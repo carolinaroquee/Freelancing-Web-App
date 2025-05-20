@@ -10,9 +10,11 @@
     $db = getDatabaseConnection();
     $categories = getAllCategories($db);
     $category = $_GET['category'];
-    $services = getServicesbyCategory($db,$category);
-
+    $service = $GET['service'] ?? null;
+    if($service === null){
+        $services = getServicesbyCategory($db,$category);
+    }
     drawHeader($session);
     drawServices($services,$db);
     drawFooter($categories); 
-?>
+    ?>

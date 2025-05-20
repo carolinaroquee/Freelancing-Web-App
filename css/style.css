@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #f5f7fa;
+}
+
 header {
     font-family: "Roboto";
     font-style: normal;
@@ -136,40 +140,51 @@ a{
 .search-services h2{
     font-size: 70px;
     color: #0063ba;
-    padding-bottom: 15px;
+    margin-bottom: 2rem;
 }
 
-.search-bar{
-    width: 70%;
-    height: 2cm;
-    font-size: 30px;
-    border: 2px solid black;
-    border-radius: 10px ;
-    padding: 5mm; /* distancia da frase à search bar*/
-    font-weight: bold;
+
+.search-bar-form {
+    display: flex;
+    justify-content: flex-start; 
 }
 
-.main-services{
-    padding-top: 20px;
+.search-bar {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  flex-wrap: wrap;
+  align-items: center;
 }
 
-.main-services > *{
-    width: 45mm;
-    height: 15mm;
-    border: 2px solid black;
-    border-radius: 10px;
-    background-color: transparent ;
-    margin-right: 1cm;
-    font-size: 15px;
-    font-weight: bold;
+.search-bar select {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  min-width: 200px;
+  background-color: #f7f7f7;
+}
+
+.search-bar button {
+  padding: 0.75rem 2rem;
+  background-color: #0063ba;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #005fa3;
 }
 
 /*Carolina*/
-
-.product {
-    background-color: whitesmoke;
-}
-
 
 .categories {
     padding: 20px 20px;
@@ -258,7 +273,6 @@ a{
     color: #1a1a1a;
     font-size: 16px;
 }
-
 
 footer {
     font-family: "Roboto", sans-serif;

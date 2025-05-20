@@ -1,60 +1,83 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro&display=swap');
 
+
 .admin-panel {
     font-family: "Roboto", sans-serif;
-    max-width: 600px;
-    margin: 120px auto 40px auto; /* espaço para o header fixo */
-    padding: 30px 30px 30px 30px; /* 120px para compensar o header de 80px */
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-#add-category h2 {
-    font-size: 26px;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #1a1a1a;
-}
-
-#add-category form {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 1rem;
     display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.admin-panel article {
+  flex: 1 1 400px;
+  max-width: 500px;
+  background-color: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.admin-panel h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+  text-align: center;
+}
+
+.admin-panel form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.admin-panel label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.admin-panel input[type="text"] {
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #f9fafb;
+  transition: border-color 0.2s;
+}
+
+.admin-panel input[type="text"]:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: #fff;
+}
+
+.admin-panel input[type="submit"] {
+  padding: 0.8rem;
+  background-color: #3b82f6;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.admin-panel input[type="submit"]:hover {
+  background-color: #2563eb;
+}
+
+@media (max-width: 900px) {
+  .admin-panel {
     flex-direction: column;
-    gap: 15px;
-}
+    align-items: center;
+  }
 
-#add-category label {
-    font-weight: 600;
-    font-size: 16px;
-    color: #333;
-}
-
-#add-category input[type="text"] {
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    transition: border-color 0.2s ease-in-out;
-}
-
-#add-category input[type="text"]:focus {
-    border-color: #0063ba;
-    outline: none;
-}
-
-#add-category input[type="submit"] {
-    padding: 12px;
-    font-size: 16px;
-    font-weight: 600;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-#add-category input[type="submit"]:hover {
-    background-color: #004f94;
+  .admin-panel article {
+    width: 90%;
+  }
 }

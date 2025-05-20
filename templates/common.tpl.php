@@ -82,19 +82,26 @@
     
         <section class="search-services">
             <h2>Learn from the best</h2>
-            <form>
-                <input class= "search-bar" type="search" placeholder="what service are you looking for?">
-            </form>
-            <form class="main-services">
-                <button>
-                    Exp. individual
-                </button>
-                <button> 
-                    Exp. grupo
-                </button>
-                <button>
-                    Revisão de trabalhos
-                </button>
+            <form class="search-bar-form" action="../pages/services_list.php" method="GET">
+                <div class="search-bar">
+                    <select name="category" >
+                        <option value="" disabled selected hidden>Category</option>
+                        <?php foreach($categories as $category){ ?>
+                            <option value="<?= htmlspecialchars($category['category_name']) ?>">
+                                <?= htmlspecialchars($category['category_name']) ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+
+                    <select name="service">
+                        <option value="" disabled selected hidden>Service</option>
+                        <option value="individual">Explicação individual</option>
+                        <option value="grupo">Explicação em grupo</option>
+                        <option value="revisao">Revisão de trabalhos</option>
+                    </select>
+
+                    <button type = "submit">Search </button>
+                </div>
             </form>
         </section>
         <section class = "product">

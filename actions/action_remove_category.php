@@ -4,6 +4,7 @@
     require_once(__DIR__.'/../database/categories.php');
 
     $session = new Session();
+    
     if (!$session->isLoggedIn()) {
         header('Location: ../pages/login.php');
         exit();
@@ -18,11 +19,11 @@
     }
     $db = getDatabaseConnection();
 
-    if (categoryExists($db, $name)) {
-        $session->addMessage('error', 'There is already a category with that name');
+    if (!categoryExists($db, $name)) {
+        $session->addMessage('error', 'There is not any category with that name');
     } else {
-        addCategory($db,$name);
-        $session->addMessage('success', 'Category added successfully');
+        removeCategory($db,$name);
+        $session->addMessage('success', 'Category removed successfully');
     }
 
     header('Location:../pages/admin_panel.php');
