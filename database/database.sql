@@ -119,3 +119,5 @@ INSERT INTO Category VALUES('Math');
 INSERT INTO Category VALUES('Science');
 INSERT INTO Category VALUES('Portuguese');
 INSERT INTO Category VALUES('English');
+INSERT INTO Category VALUES('Physics');
+

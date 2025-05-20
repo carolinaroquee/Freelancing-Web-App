@@ -24,7 +24,6 @@
         $this->service_type = $service_type;
         $this->num_sessoes= $num_sessoes;
         $this->max_students= $max_students;
-        
     }
 
     function save($db) {
@@ -41,6 +40,8 @@
         $stmt->bindParam(':max_students', $this->max_students);
         
         $stmt->execute(); 
+
+        $this->service_id= (int)$db->lastInsertId();
 
     }
 
@@ -87,18 +88,11 @@ function getServicesbyCategory(PDO $db, string $category): array {
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         // Verificar se o user_id existe na tabela User
         $user = User::getUserbyId($db, intval($row['user_id']));
-        
-        // Verificar se o usuário foi encontrado corretamente
-        if ($user) {
-            // Chama a função getPhoto() para pegar a imagem de perfil
-            $profileImage = $user->getPhoto();
-            $row['profile_image'] = $profileImage;
-            $services[] = $row;
-        } else {
-            // Caso o usuário não seja encontrado, adicionar um perfil padrão ou algum tratamento
-            $row['profile_image'] = "../images/default-profile.png";  // Ou algum outro valor de fallback
-            $services[] = $row;
-        }
+          
+        $profileImage = $user->getPhoto();
+        $row['profile_image'] = $profileImage;
+        $services[] = $row;
+       
     }
 
     return $services;

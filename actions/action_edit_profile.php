@@ -10,6 +10,7 @@
     if(!$session->isLoggedIn()){
         $session->addMessage('error',"Action not available");
     }
+    
     if(!valid_CSRF($_POST['csrf'])){
         die(header('Location:../pages/profile.php'));
     }

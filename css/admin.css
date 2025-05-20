@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro&display=swap');
+
+.admin-panel {
+    font-family: "Roboto", sans-serif;
+    max-width: 600px;
+    margin: 120px auto 40px auto; /* espaço para o header fixo */
+    padding: 30px 30px 30px 30px; /* 120px para compensar o header de 80px */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+#add-category h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #1a1a1a;
+}
+
+#add-category form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#add-category label {
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+}
+
+#add-category input[type="text"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.2s ease-in-out;
+}
+
+#add-category input[type="text"]:focus {
+    border-color: #0063ba;
+    outline: none;
+}
+
+#add-category input[type="submit"] {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#add-category input[type="submit"]:hover {
+    background-color: #004f94;
+}

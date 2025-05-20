@@ -14,9 +14,10 @@
     public ?string $address;
     public ?string $postal_code;
     public ?string $city;
+    public ?string $profile_image;
   
 
-    public function __construct(int $id, string $username, string $name, string $email, string $password, string $user_type, string $registration_date, ?string $birth_date, ?string $address, ?string $postal_code, ?string $city) { 
+    public function __construct(int $id, string $username, string $name, string $email, string $password, string $user_type, string $registration_date, ?string $birth_date, ?string $address, ?string $postal_code, ?string $city, ?string $profile_image) { 
       $this->id = $id;
       $this->username = $username;
       $this->name= $name;
@@ -28,6 +29,7 @@
       $this->address = $address;
       $this->postal_code = $postal_code;
       $this->city=$city;
+      $this->profile_image= $profile_image;
     }
 
     function getName() : string {
@@ -58,6 +60,10 @@
       
       $user = $stmt->fetch();
 
+      var_dump($user);
+      var_dump($password);
+      var_dump($user['password']);
+
       if ($user !== false && password_verify($password, $user['password'])) {
         return new User(
           intval($user['user_id']),
@@ -70,7 +76,8 @@
           $user['birth_date'],
           $user['address'],
           $user['postal_code'],
-          $user['city']
+          $user['city'],
+          $user['profile_image']
         );
       } else return null;
     }
@@ -96,7 +103,8 @@
           $user['birth_date'],
           $user['address'],
           $user['postal_code'],
-          $user['city']
+          $user['city'],
+          $user['profile_image']
         );
       }
       else return null;
@@ -120,7 +128,8 @@
           $user['birth_date'],
           $user['address'],
           $user['postal_code'],
-          $user['city']
+          $user['city'],
+          $user['profile_image']
         );
     } 
 
@@ -144,6 +153,8 @@
       $stmt->execute(array($this->user_type, $this->id));
 
     }
+
+
     function updateProfileImage(PDO $db, string $fileName){
       $stmt = $db->prepare('
         UPDATE User SET profile_image = ?
@@ -151,16 +162,30 @@
       ');
 
       $stmt->execute(array($fileName, $this->id));
+
     }
 
+
     function getPhoto() : string {
+      $photo = $this->profile_image ?? "/docs/profile_img/default.png";
+      if (file_exists(__DIR__ . '/..' . $photo)) {
+        return $photo;
+      } else {
+      return "/docs/profile_img/default.png";
+      }
+    }
+
+
+
+
+    /*function getPhoto() : string {
 
       $default = "/docs/profile_img/default.png";
       $attemp = "/docs/profile_img/profile$this->id.png";
       if (file_exists(__DIR__.'/..'.$attemp)) {
         return $attemp;
       } else return $default;
-    }  
+    }*/
 
   }
 ?>

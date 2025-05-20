@@ -22,7 +22,9 @@
     $max_students = $_POST['max_students'] !== '' ? $_POST['max_students'] : null;
 
     $freelancer_id = $session->getId();
-    $service = new Service($freelancer_id,$title,$category,$description,$duracao,$price,$service_type,$num_sessoes,$max_students,$images);
+    
+
+    $service = new Service(0,$freelancer_id,$title,$category,$description,$duracao,$price,$service_type,$num_sessoes,$max_students);
 
     $service->save($db);
 

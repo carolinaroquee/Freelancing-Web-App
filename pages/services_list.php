@@ -13,6 +13,6 @@
     $services = getServicesbyCategory($db,$category);
 
     drawHeader($session);
-    drawServices($services);
+    drawServices($services,$db);
     drawFooter($categories); 
 ?>

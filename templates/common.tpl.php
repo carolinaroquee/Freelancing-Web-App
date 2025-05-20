@@ -17,7 +17,8 @@
             <link rel="stylesheet" href="../css/style.css">
             <link rel="stylesheet" href="../css/profile.css">
             <link rel="stylesheet" href="../css/services.css">
-            <link rel="stylesheet" href="../css/service_detail.css" />
+            <link rel="stylesheet" href="../css/service_detail.css">
+            <link rel="stylesheet" href="../css/admin.css">
             <script src="../javascript/script.js"> href</script>
             <script src="../javascript/validation_dates.js"></script>
         </head>                  
@@ -66,15 +67,13 @@
                 <img src="<?= $session->getPhoto() ?>" alt="Profile image" class="profile-image">
             </button>
             <div id='profile-menu'>
+                <?php if($session->getUserType()==='admin'){ ?>
+                    <a href="../pages/admin_panel.php">Admin Panel</a>
+                <?php } ?>
                 <a href="../pages/profile.php">Profile</a>
                 <a href="../actions/action_logout.php">Logout</a>
             </div>
         </div> 
-        <!--<form action="../actions/action_logout.php" method="post">
-            <button type="submit" class="logout-btn">Logout</button>
-        </form>
-        <a href="../pages/profile.php"><Profile></a>
-        <a href="../pages/profile.php" ><img src="../docs/default_profile_image.png" alt="profile image" id="profile"></a>-->
     </div>
 <?php } ?>
 

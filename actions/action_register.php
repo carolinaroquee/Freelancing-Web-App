@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
    
 
-    $user = new User(0,$username,$name,$email,$hashed_password,$user_type,$data,null, null,null,null);
+    $user = new User(0,$username,$name,$email,$hashed_password,$user_type,$data,null, null,null,null,null);
     $user->save($db);
 
     $user_id = $db->lastInsertId();  
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $session->setName($name);
     $session->setUserType($user_type);
     $session->setPhoto($user->getPhoto());
-    $session->addMessage('sucess','Account created successfully!');
+    $session->addMessage('success','Account created successfully!');
 
     // header("Location:../pages/index.php");
 

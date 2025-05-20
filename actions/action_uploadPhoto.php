@@ -15,62 +15,61 @@
     $session->addMessage('warning', 'Select the desired photo first');
     die(header("Location: ../pages/profile.php"));
   }
-
-  $tmpPath= $_FILES['image']['tmp_name'];
+    $tmpPath = $_FILES['image']['tmp_name'];
   $imageInfo = getimagesize($tmpPath);
-  $fileName = "../docs/profile_img/profile" .  $session->getId() . ".png";
-  move_uploaded_file($_FILES['image']['tmp_name'], $fileName);
 
+  $relativePath = "/docs/profile_img/profile" . $session->getId() . ".png";
+  $absolutePath = __DIR__ . "/.." . $relativePath;
+
+  // Criar imagem a partir do original (sem move_uploaded_file)
   switch ($imageInfo['mime']) {
-  case 'image/jpeg':
-    $img = imagecreatefromjpeg($fileName);
-    break;
-  case 'image/png':
-    $img = imagecreatefrompng($fileName);
-    break;
-  case 'image/gif':
-    $img = imagecreatefromgif($fileName);
-    break;
-  default:
-    $session->addMessage('error', 'Image format not support');
-    die(header('Location: ../pages/profile.php'));
+    case 'image/jpeg':
+      $img = imagecreatefromjpeg($tmpPath);
+      break;
+    case 'image/png':
+      $img = imagecreatefrompng($tmpPath);
+      break;
+    case 'image/gif':
+      $img = imagecreatefromgif($tmpPath);
+      break;
+    default:
+      $session->addMessage('error', 'Formato de imagem não suportado');
+      die(header('Location: ../pages/profile.php'));
   }
 
-  $width = imagesx($img);     // largura original
-  $height = imagesy($img);    // altura original
-
-  // 1. Lado do maior quadrado possível dentro da imagem
+  // Recorte e redimensionamento
+  $width = imagesx($img);
+  $height = imagesy($img);
   $square = min($width, $height);
-
-  // 2. Coordenadas de onde começar o corte (para centrar)
   $src_x = intval(($width - $square) / 2);
   $src_y = intval(($height - $square) / 2);
-
-  // 3. Tamanho final desejado do avatar (opcional, aqui é 300x300)
   $finalSize = 300;
-
-  // 4. Criar imagem nova
   $profile = imagecreatetruecolor($finalSize, $finalSize);
 
-  // 5. Copiar o quadrado da imagem original, redimensionando se necessário
   imagecopyresampled(
-    $profile,        // destino
-    $img,            // origem
-    0, 0,            // destino x, y
-    $src_x, $src_y,  // origem x, y (centrado)
-    $finalSize, $finalSize,  // tamanho destino
-    $square, $square         // tamanho origem (corte quadrado)
+    $profile,
+    $img,
+    0, 0,
+    $src_x, $src_y,
+    $finalSize, $finalSize,
+    $square, $square
   );
 
-  // 6. Guardar imagem
-  imagepng($profile, $fileName);
+  // Salvar imagem processada
+  imagepng($profile, $absolutePath);
 
+  // Limpeza
+  imagedestroy($img);
+  imagedestroy($profile);
+  
 
   $db = getDatabaseConnection();
   $user = User::getUserbyId($db,$session->getId());
 
-  $user->updateProfileImage($db,$fileName);
-  $session->setPhoto($fileName);
+  $user->profile_image=$relativePath;
+  $user->updateProfileImage($db,$relativePath);
+
+  $session->setPhoto($relativePath);
   $session->addMessage('success', 'Image uploaded successfully');
   header('Location: ../pages/profile.php');
 ?>

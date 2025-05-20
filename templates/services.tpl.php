@@ -58,12 +58,12 @@
         <h2>Services Available</h2>
         <div class="services-button">
             <?php foreach ($services as $service) { 
-                $profileImage = $service['profile_image']; // Caminho da imagem
+              $profileImage = $service['profile_image']; // Caminho da imagem
             ?>
                 <div class="service-card">
                     <!-- Exibe a imagem do freelancer -->
                     <div class="service-img-container">
-                        <img class="profile-photo" src="<?= htmlspecialchars($profileImage) ?>" alt="Foto de <?= htmlspecialchars($service['freelancer_name']) ?>">
+                      <img class="profile-photo" src="<?= htmlspecialchars($profileImage) ?>" alt="Freelancer profile photo">
                     </div>
                     <div class="service-details">
                         <p class="service-name"><h3><?= htmlspecialchars($service['title']) ?><h3>
