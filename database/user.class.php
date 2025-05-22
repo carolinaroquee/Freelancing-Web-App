@@ -154,6 +154,14 @@
 
     }
 
+    function updatePassword(PDO $db, string $password){
+      $stmt = $db->prepare('
+        UPDATE User SET password = ?
+        WHERE user_id = ?
+      ');
+      $stmt->execute(array($password, $this->id));
+    }
+
 
     function updateProfileImage(PDO $db, string $fileName){
       $stmt = $db->prepare('
@@ -178,14 +186,6 @@
 
 
 
-    /*function getPhoto() : string {
-
-      $default = "/docs/profile_img/default.png";
-      $attemp = "/docs/profile_img/profile$this->id.png";
-      if (file_exists(__DIR__.'/..'.$attemp)) {
-        return $attemp;
-      } else return $default;
-    }*/
-
   }
+
 ?>

@@ -68,7 +68,73 @@
 
 } 
 
-function getServicesbyCategory(PDO $db, string $category): array {
+function getServices(PDO $db, ?string $category, ?string $service_type, ?float $min_price, ?float $max_price,?int $min_rating, ?int $max_rating): array {
+    $query = '
+        SELECT s.service_id, s.title, s.price, s.service_type,
+               u.name AS freelancer_name, u.user_id,
+               (SELECT AVG(r.rating) FROM Review r
+                JOIN Booking b ON r.booking_id = b.booking_id
+                WHERE b.service_id = s.service_id) AS avg_rating
+        FROM Service s
+        JOIN Freelancer f ON s.freelancer_id = f.freelancer_id
+        JOIN User u ON f.freelancer_id = u.user_id
+        WHERE s.status = "ativo" 
+        ';
+
+    $params = [];
+
+    if ($category !== null) {
+        $query .= ' AND s.category_name = :category';
+        $params[':category'] = $category;
+    }
+    if ($service_type !== null) {
+        $query .= ' AND s.service_type = :service_type';
+        $params[':service_type'] = $service_type;
+    }
+    if ($min_price !== null){
+        $query .= ' AND s.price >= :min_price';
+        $params[':min_price'] = $min_price;
+    }
+    if ($max_price !== null){
+        $query .= ' AND s.price <= :max_price';
+        $params[':max_price'] = $max_price;
+    }
+    if($min_rating !== null){
+        $query .= ' AND (
+            SELECT AVG(r.rating)
+            FROM Review r
+            JOIN Booking b ON r.booking_id = b.booking_id
+            WHERE b.service_id = s.service_id
+        ) >= :min_rating';
+        $params[':min_rating'] = $min_rating;
+    }
+    if($max_rating !== null){
+        $query .= ' AND (
+            SELECT AVG(r.rating)
+            FROM Review r
+            JOIN Booking b ON r.booking_id = b.booking_id
+            WHERE b.service_id = s.service_id
+        ) <= :max_rating';
+        $params[':max_rating'] = $max_rating;
+    }
+
+    $stmt = $db->prepare($query); 
+    $stmt->execute($params);
+
+    $services = [];
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $user = User::getUserbyId($db, intval($row['user_id']));
+          
+        $profileImage = $user->getPhoto();
+        $row['profile_image'] = $profileImage;
+        $services[] = $row;
+       
+    }
+
+    return $services;
+}
+
+/*function getServicesbyCategory(PDO $db, string $category): array {
     $stmt = $db->prepare('
         SELECT s.service_id, s.title, s.price, s.service_type,
                u.name AS freelancer_name, u.user_id,
@@ -96,6 +162,5 @@ function getServicesbyCategory(PDO $db, string $category): array {
     }
 
     return $services;
-}
-
+}*/
 ?>

@@ -53,9 +53,32 @@
 <?php } ?>
 
 
-<?php function drawServices(array $services){ ?>
+<?php function drawServices(array $services, ?string $category, ?string $service_type){ ?>
+
     <section id="services">
-        <h2>Services Available</h2>
+      <h2>Services Available</h2>
+      <form method="GET" action="services_list.php" class="filter-dropdown">
+          <input type="hidden" name="category" value="<?= htmlspecialchars($category ?? '') ?>">
+          <input type="hidden" name="service_type" value="<?= htmlspecialchars($service_type ?? '') ?>">
+          <button type = "button" class = "filter-button" onclick= "toggleDropdown()" >
+            <span>Filter by:</span> 
+          </button>
+          <div id = "filters"> 
+            <h3>Price:</h3>
+            <label for="min_price">Minimum price:</label>
+            <input type="number" name="min_price" min ="0">
+            <label for="max_price">Maximum price:</label>
+            <input type="number" name="max_price" min = "1">
+
+            <h3>Rating:</h3>
+            <label for="min_rating">Minimum rating:</label>
+            <input type="number" name="min_rating" min ="0" max = "5">
+            <label for="max_rating">Maximum rating:</label>
+            <input type="number" name="max_rating"  min = "0" max ="5">
+
+            <button type="submit" class="apply-filters-btn">Apply Filters</button>
+          </div>
+      </form>
         <div class="services-button">
             <?php foreach ($services as $service) { 
               $profileImage = $service['profile_image']; // Caminho da imagem

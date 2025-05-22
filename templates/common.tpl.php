@@ -19,8 +19,8 @@
             <link rel="stylesheet" href="../css/services.css">
             <link rel="stylesheet" href="../css/service_detail.css">
             <link rel="stylesheet" href="../css/admin.css">
-            <script src="../javascript/script.js"> href</script>
-            <script src="../javascript/validation_dates.js"></script>
+            <script src="../javascript/script.js"></script>
+            <script src="../javascript/filters.js"></script>
         </head>                  
         <body>
             <header>
@@ -93,11 +93,11 @@
                         <?php } ?>
                     </select>
 
-                    <select name="service">
+                    <select name="service_type">
                         <option value="" disabled selected hidden>Service</option>
-                        <option value="individual">Explicação individual</option>
-                        <option value="grupo">Explicação em grupo</option>
-                        <option value="revisao">Revisão de trabalhos</option>
+                        <option value="individual presencial">Explicação individual</option>
+                        <option value="grupo presencial ">Explicação em grupo</option>
+                        <option value="revisão trabalhos">Revisão de trabalhos</option>
                     </select>
 
                     <button type = "submit">Search </button>
@@ -115,18 +115,24 @@
             </section>
             <section class="services">
                 <h2>Popular services</h2>
-                <button>
-                    <img src="../docs/exp-ind.jpg" alt="Explicação individual">
-                    <span>Exp. individual</span>
-                </button>
-                <button>
-                    <img src="../docs/exp-grp.jpg" alt="Explicação grupo">
-                    <span>Exp. individual</span>
-                </button>
-                <button>
-                    <img src="../docs/rev-trabalho.jpg" alt="Revisão de trabalho">
-                    <span>Exp. individual</span>
-                </button>
+                <a href="../pages/services_list.php?service_type='individual presencial' ?>">
+                    <button>
+                        <img src="../docs/exp-ind.jpg" alt="Explicação individual">
+                        <span>Exp. individual</span>
+                    </button>
+                </a>
+                <a href="../pages/services_list.php?service_type='grupo presencial'>">
+                    <button>
+                        <img src="../docs/exp-ind.jpg" alt="Explicação Grupo">
+                        <span>Exp. Grupo</span>
+                    </button>
+                </a>
+                <a href="../pages/services_list.php?service_type='revisão trabalhos'>">
+                    <button>
+                        <img src="../docs/exp-ind.jpg" alt="Revisão de trabalho">
+                        <span>Revisão de trabalho</span>
+                    </button>
+                </a>
             </section>
         </section>
     

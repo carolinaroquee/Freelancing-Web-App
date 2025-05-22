@@ -25,6 +25,15 @@
                 <input type="submit" value="Remove Category">
             </form>
         </article>
+
+        <article id = "change-usertype"> 
+            <form action="../actions/action_upgradeToAdmin.php" method="POST">
+                <h2>Upgrade User To Admin</h2>
+                <label for="username">Username:</label>
+                <input type="text" name="username" required>
+                <input type="submit" value="Upgrade to Admin">
+            </form>
+        </article>
         <section id="messages">
                 <?php foreach ($session->getMessages() as $messsage) { ?>
                     <article class="<?=$messsage['type']?>">

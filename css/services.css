@@ -6,6 +6,7 @@
   padding: 20px;
 }
 
+
 .services-button {
   display: flex;             /* Alinha os cartões horizontalmente */
   flex-wrap: wrap;           /* Permite que os cartões quebrem para a próxima linha, se necessário */
@@ -75,4 +76,56 @@
 
 .view-service-btn:hover {
   background-color: #0056b3;
+}
+
+#filters {
+  display: none;
+}
+
+.filter-button {
+  background-color: #4A90E2;
+  color: white;
+  padding: 10px 20px;
+  margin-top:1;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.filter-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+#filters {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 280px;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+}
+
+#filters h3 {
+  margin-top: 0;
+}
+
+#filters input {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.apply-filters-btn {
+  background-color: #4a90e2;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }

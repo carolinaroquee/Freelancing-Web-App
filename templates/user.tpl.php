@@ -36,10 +36,18 @@
         <label>Profile Picture: <input type="file" name="image"></label>
         <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
         <input type="submit" value="Upload">
-    </form>
-
-    <img src="<?= $session->getPhoto() ?>" alt="Profile image" >
-
+      </form>
+      
+      
+      <img src="<?= $session->getPhoto() ?>" alt="Profile image" >
+      <form action="../actions/action_changePassword.php" method="post">
+        <label for="your_password">Your Password:</label>
+        <input type="password" name="password" required>
+        <label for="new_password">New Password:</label>
+        <input type="password" name="new_password" required>
+        <button type="submit">Change Password</button>
+      </form>
+      
   </section>
 <?php } ?>
 
