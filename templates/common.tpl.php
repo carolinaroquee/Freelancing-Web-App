@@ -19,6 +19,9 @@
             <link rel="stylesheet" href="../css/services.css">
             <link rel="stylesheet" href="../css/service_detail.css">
             <link rel="stylesheet" href="../css/admin.css">
+            <link rel="stylesheet" href="../css/services_manage.css">
+            
+
             <script src="../javascript/script.js"></script>
             <script src="../javascript/filters.js"></script>
         </head>                  
@@ -71,6 +74,11 @@
                     <a href="../pages/admin_panel.php">Admin Panel</a>
                 <?php } ?>
                 <a href="../pages/profile.php">Profile</a>
+
+                <?php if($session->getUserType()==='tutor'){ ?>
+                    <a href="../pages/services_manage.php">My Services</a>
+                <?php } ?>
+
                 <a href="../actions/action_logout.php">Logout</a>
             </div>
         </div> 

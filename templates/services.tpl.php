@@ -168,3 +168,95 @@
   </div>
 </section>
 <?php } ?>
+
+
+<?php
+function drawServicesManageTable(array $services): void {
+?>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>My Services</title>
+</head>
+<body>
+    <h1>My Services</h1>
+    <div id="services-table-container">
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Price(€)</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($services as $service): ?>
+                <tr>
+                    <td><?= htmlspecialchars($service['title']) ?></td>
+                    <td><?= htmlspecialchars($service['category_name']) ?></td>
+                    <td><?= number_format($service['price'], 2) ?></td>
+                    <td><?= htmlspecialchars($service['status']) ?></td>
+                    <td>
+                        <a href="edit_service.php?id=<?= $service['service_id'] ?>">Edit</a> |
+                        <a href="../actions/action_delete_service.php?id=<?= $service['service_id'] ?>" onclick="return confirm('Are you sure you want to delete this service?')">Delete Service</a> |
+                        <?php if ($service['status'] === 'ativo'): ?>
+                          <a href="../actions/action_toggle_service_status.php?id=<?= $service['service_id'] ?>&action=inativo">Disable Service</a>
+                        <?php else: ?>
+                          <a href="../actions/action_toggle_service_status.php?id=<?= $service['service_id'] ?>&action=ativo">Enable Service</a>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>
+<?php
+} 
+
+function drawEditServiceForm(array $service): void {
+?>
+<link rel="stylesheet" href="../css/edit_service.css">
+    <h1>Edit Service</h1>
+    <form action="" method="POST">
+        <label>Title:</label><br>
+        <input type="text" name="title" value="<?= htmlspecialchars($service['title']) ?>" required><br><br>
+        
+        <label>Category:</label><br>
+        <input type="text" name="category_name" value="<?= htmlspecialchars($service['category_name']) ?>" required><br><br>
+
+        <label>Description:</label><br>
+        <textarea name="description" rows="5" required><?= htmlspecialchars($service['description']) ?></textarea><br><br>
+
+        <label>Duration(minutes):</label><br>
+        <input type="number" name="duracao" value="<?= htmlspecialchars($service['duracao']) ?>" required><br><br>
+
+        <label>Price(€):</label><br>
+        <input type="number" step="0.01" name="price" value="<?= htmlspecialchars($service['price']) ?>" required><br><br>
+
+        <label>Type of Service:</label><br>
+        <select name="service_type" required>
+            <?php
+            $types = ['individual presencial', 'grupo presencial', 'individual online', 'grupo online', 'revisão trabalhos'];
+            foreach ($types as $type) {
+                $selected = ($service['service_type'] === $type) ? 'selected' : '';
+                echo "<option value=\"$type\" $selected>$type</option>";
+            }
+            ?>
+        </select><br><br>
+
+        <label>Number of Sessions:</label><br>
+        <input type="number" name="num_sessoes" value="<?= htmlspecialchars($service['num_sessoes']) ?>" required><br><br>
+
+        <label>Number Maximum of Students (opcional):</label><br>
+        <input type="number" name="max_students" value="<?= htmlspecialchars($service['max_students'] ?? '') ?>"><br><br>
+
+        <button type="submit">Atualize Service</button>
+    </form>
+<?php
+} 
+?>
