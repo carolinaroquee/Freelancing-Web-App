@@ -1,36 +1,29 @@
-/* Fonte e fundo */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  margin: 40px auto;
-  max-width: 600px;
-  color: #333;
-  padding: 20px;
-}
-
-/* Título da página */
+/* Título principal */
 h1 {
+  margin-top: 100px;
   color: #004080;
+  font-family: Arial, sans-serif;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 30px;
-  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
-/* Estilo do formulário */
+/* Estilo geral do formulário */
 form {
+  max-width: 600px;
+  margin: 0 auto 40px;
   background-color: white;
   padding: 30px 40px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
 }
 
 /* Labels */
 label {
-  font-weight: 600;
   display: block;
   margin-bottom: 8px;
+  font-weight: 600;
   color: #222;
 }
 
@@ -42,45 +35,42 @@ select {
   width: 100%;
   padding: 10px 12px;
   margin-bottom: 20px;
+  border: 1px solid #ddd;
   border-radius: 6px;
-  border: 1px solid #ccc;
   font-size: 16px;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
   transition: border-color 0.3s ease;
 }
 
-/* Foco nos inputs */
 input[type="text"]:focus,
 input[type="number"]:focus,
 textarea:focus,
 select:focus {
   border-color: #004080;
   outline: none;
-  box-shadow: 0 0 5px rgba(0, 64, 128, 0.5);
+  box-shadow: 0 0 5px rgba(0, 64, 128, 0.4);
 }
 
-/* Textarea altura */
+/* Textarea */
 textarea {
   min-height: 120px;
   resize: vertical;
 }
 
-/* Botão submit */
+/* Botão de submit */
 button[type="submit"] {
+  width: 100%;
+  padding: 15px;
   background-color: #004080;
   color: white;
-  border: none;
-  padding: 15px;
-  font-size: 18px;
   font-weight: 700;
-  width: 100%;
+  font-size: 18px;
+  border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-/* Hover botão */
 button[type="submit"]:hover {
-  background-color: #003060;
+  background-color: #002f5a;
 }

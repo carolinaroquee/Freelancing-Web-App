@@ -174,9 +174,7 @@
 function drawServicesManageTable(array $services): void {
 ?>
 <!DOCTYPE html>
-<html lang="pt">
 <head>
-    <meta charset="UTF-8">
     <title>My Services</title>
 </head>
 <body>
