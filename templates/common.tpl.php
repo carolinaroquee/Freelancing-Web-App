@@ -20,6 +20,8 @@
             <link rel="stylesheet" href="../css/service_detail.css">
             <link rel="stylesheet" href="../css/admin.css">
             <link rel="stylesheet" href="../css/services_manage.css">
+            <link rel="stylesheet" href="../css/client_booking.css">
+
             
 
             <script src="../javascript/script.js"></script>
@@ -78,6 +80,8 @@
                 <?php if($session->getUserType()==='tutor'){ ?>
                     <a href="../pages/services_manage.php">My Services</a>
                 <?php } ?>
+
+                <a href="../pages/client_bookings.php">My Reservations</a>
 
                 <a href="../actions/action_logout.php">Logout</a>
             </div>

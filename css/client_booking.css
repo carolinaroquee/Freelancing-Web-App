@@ -1,0 +1,50 @@
+h1 {
+  margin-top: 100px;
+  color: #004080;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+thead {
+  background-color: #004080;
+  color: white;
+}
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+tbody tr:hover {
+  background-color: #cce0ff;
+  cursor: pointer;
+}
+
+a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Espaço para ajustar caso uses container */
+#bookings-table-container {
+  margin-top: 80px; /* Ajusta para a altura do header */
+  margin-bottom: 30px;
+}
