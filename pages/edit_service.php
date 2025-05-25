@@ -4,13 +4,14 @@ declare(strict_types=1);
 require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../templates/services.tpl.php');
+require_once(__DIR__ . '/../database/service.class.php');
 require_once(__DIR__ . '/../templates/common.tpl.php');
 require_once('../database/categories.php'); 
 
 
 $session = new Session();
 
-if (!$session->isLoggedIn() || $session->getUserType() !== 'tutor') {
+if (!$session->isLoggedIn() || $session->getUserType() === 'student') {
     header('Location: ../pages/login.php');
     exit;
 }
@@ -21,11 +22,14 @@ $freelancer_id = $session->getId();
 
 $service_id = (int)$_GET['id'];
 
+$service= Service::getServiceById($db, $service_id);
+
+
 // Buscar dados do serviço
-$sql = "SELECT * FROM Service WHERE service_id = ?";
+/*$sql = "SELECT * FROM Service WHERE service_id = ?";
 $stmt = $db->prepare($sql);
 $stmt->execute([$service_id]);
-$service = $stmt->fetch(PDO::FETCH_ASSOC);
+$service = $stmt->fetch(PDO::FETCH_ASSOC);*/
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -49,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 drawHeader($session);
-drawEditServiceForm($service, $categories);
+drawEditServiceForm($service);
 drawFooter($categories);
 
 ?>

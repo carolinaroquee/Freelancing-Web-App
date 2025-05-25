@@ -134,33 +134,11 @@ function getServices(PDO $db, ?string $category, ?string $service_type, ?float $
     return $services;
 }
 
-/*function getServicesbyCategory(PDO $db, string $category): array {
-    $stmt = $db->prepare('
-        SELECT s.service_id, s.title, s.price, s.service_type,
-               u.name AS freelancer_name, u.user_id,
-               (SELECT AVG(r.rating) FROM Review r
-                JOIN Booking b ON r.booking_id = b.booking_id
-                WHERE b.service_id = s.service_id) AS avg_rating
-        FROM Service s
-        JOIN Freelancer f ON s.freelancer_id = f.freelancer_id
-        JOIN User u ON f.freelancer_id = u.user_id
-        WHERE s.category_name = :category AND s.status = "ativo"
-    ');
 
-    $stmt->bindParam(':category', $category, PDO::PARAM_STR);
-    $stmt->execute();
+function getServiceByFreelancerId(PDO $db, int $id) {
+    $stmt = $db->prepare('SELECT * FROM Service WHERE freelancer_id = ?');
+    $stmt->execute([$id]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
-    $services = [];
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        // Verificar se o user_id existe na tabela User
-        $user = User::getUserbyId($db, intval($row['user_id']));
-          
-        $profileImage = $user->getPhoto();
-        $row['profile_image'] = $profileImage;
-        $services[] = $row;
-       
-    }
-
-    return $services;
-}*/
 ?>

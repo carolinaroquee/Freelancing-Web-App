@@ -216,44 +216,44 @@ function drawServicesManageTable(array $services): void {
 <?php
 } 
 
-function drawEditServiceForm(array $service): void {
+function drawEditServiceForm(Service $service): void {
 ?>
 <link rel="stylesheet" href="../css/edit_service.css">
     <h1>Edit Service</h1>
     <form action="" method="POST">
         <label>Title:</label><br>
-        <input type="text" name="title" value="<?= htmlspecialchars($service['title']) ?>" required><br><br>
+        <input type="text" name="title" value="<?= htmlspecialchars($service->title) ?>" required><br><br>
         
         <label>Category:</label><br>
-        <input type="text" name="category_name" value="<?= htmlspecialchars($service['category_name']) ?>" required><br><br>
+        <input type="text" name="category_name" value="<?= htmlspecialchars($service->category_name) ?>" required><br><br>
 
         <label>Description:</label><br>
-        <textarea name="description" rows="5" required><?= htmlspecialchars($service['description']) ?></textarea><br><br>
+        <textarea name="description" rows="5" required><?= htmlspecialchars($service->description) ?></textarea><br><br>
 
         <label>Duration(minutes):</label><br>
-        <input type="number" name="duracao" value="<?= htmlspecialchars($service['duracao']) ?>" required><br><br>
+        <input type="number" name="duracao" value="<?= htmlspecialchars($service->duracao) ?>" required><br><br>
 
         <label>Price(€):</label><br>
-        <input type="number" step="0.01" name="price" value="<?= htmlspecialchars($service['price']) ?>" required><br><br>
+        <input type="number" step="0.01" name="price" value="<?= htmlspecialchars($service->price) ?>" required><br><br>
 
         <label>Type of Service:</label><br>
         <select name="service_type" required>
-            <?php
-            $types = ['individual presencial', 'grupo presencial', 'individual online', 'grupo online', 'revisão trabalhos'];
+            <?php 
+            $types = ['individual presencial', 'grupo presencial', 'revisão trabalhos'];
             foreach ($types as $type) {
-                $selected = ($service['service_type'] === $type) ? 'selected' : '';
+                $selected = ($service->service_type === $type) ? 'selected' : '';
                 echo "<option value=\"$type\" $selected>$type</option>";
             }
             ?>
         </select><br><br>
 
         <label>Number of Sessions:</label><br>
-        <input type="number" name="num_sessoes" value="<?= htmlspecialchars($service['num_sessoes']) ?>" required><br><br>
+        <input type="number" name="num_sessoes" value="<?= htmlspecialchars($service->num_sessoes) ?>" required><br><br>
 
         <label>Number Maximum of Students (opcional):</label><br>
-        <input type="number" name="max_students" value="<?= htmlspecialchars($service['max_students'] ?? '') ?>"><br><br>
+        <input type="number" name="max_students" value="<?= htmlspecialchars($service->max_students ?? '') ?>"><br><br>
 
-        <button type="submit">Atualize Service</button>
+        <button type="submit">Update Service</button>
     </form>
 <?php
 } 

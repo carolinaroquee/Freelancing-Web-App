@@ -9,8 +9,8 @@
     $session = new Session();
     $db = getDatabaseConnection();
     $categories = getAllCategories($db);
-    $category = $_GET['category']?? null;
-    $service = $_GET['service_type'] ?? null;
+    $category = (!empty ($_GET['category'])) ? $_GET['category'] : null;
+    $service = (!empty ($_GET['service_type'])) ? $_GET['service_type'] : null;
     $min_price = (!empty($_GET['min_price'])) ? floatval($_GET['min_price']) : null;
     $max_price = (!empty($_GET['max_price'])) ? floatval($_GET['max_price']) : null;
     $min_rating = (!empty($_GET['min_rating'])) ? floatval($_GET['min_rating']) : null;

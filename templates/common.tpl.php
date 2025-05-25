@@ -63,7 +63,7 @@
     <div class="user-nav">
         <?php if($session->getUserType()==='student'){ ?>
             <a href="../pages/become_freelancer.php">Become a Tutor</a>
-        <?php } else{ ?>
+        <?php } else { ?>
             <a href="../pages/add_service.php">Add Service</a>
         <?php } ?>
         
@@ -77,7 +77,7 @@
                 <?php } ?>
                 <a href="../pages/profile.php">Profile</a>
 
-                <?php if($session->getUserType()==='tutor'){ ?>
+                <?php if($session->getUserType()!=='student'){ ?>
                     <a href="../pages/services_manage.php">My Services</a>
                 <?php } ?>
 
@@ -127,19 +127,19 @@
             </section>
             <section class="services">
                 <h2>Popular services</h2>
-                <a href="../pages/services_list.php?service_type='individual presencial' ?>">
+                <a href="../pages/services_list.php?service_type=<?= urlencode('individual presencial') ?>">
                     <button>
                         <img src="../docs/exp-ind.jpg" alt="Explicação individual">
                         <span>Exp. individual</span>
                     </button>
                 </a>
-                <a href="../pages/services_list.php?service_type='grupo presencial'>">
+                <a href="../pages/services_list.php?service_type=<?= urlencode('grupo presencial') ?>">
                     <button>
                         <img src="../docs/exp-ind.jpg" alt="Explicação Grupo">
                         <span>Exp. Grupo</span>
                     </button>
                 </a>
-                <a href="../pages/services_list.php?service_type='revisão trabalhos'>">
+                <a href="../pages/services_list.php?service_type=<?= urlencode('revisão trabalhos') ?>">
                     <button>
                         <img src="../docs/exp-ind.jpg" alt="Revisão de trabalho">
                         <span>Revisão de trabalho</span>
@@ -266,11 +266,7 @@
                     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <button type="submit">Login</button> 
                 </form>
-                <p> or sign in with </p>
-                <form action="../actions/action_login.php" method="post">
-                    <button type="submit" class="google-btn">
-                        <img id="google-logo" src="../docs/google_logo.png" alt="Google logo"/>Continue with Google</button>
-                </form>
+
                 <p class="signup-text">Don't have an account? <a href="../pages/sign_up.php">Join here</a></p>
                 
             </section>    

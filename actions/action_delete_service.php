@@ -6,7 +6,7 @@ require_once(__DIR__ . '/../database/connection.db.php');
 
 $session = new Session();
 
-if (!$session->isLoggedIn() || $session->getUserType() !== 'tutor') {
+if (!$session->isLoggedIn() || $session->getUserType() === 'student') {
     header('Location: ../pages/login.php');
     exit;
 }
