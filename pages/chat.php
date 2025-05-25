@@ -13,24 +13,25 @@
     $categories = getAllCategories($db);
 
     $logged_user_id = $session->getId();
-    $freelancer_id= intval($_GET['freelancer'] ?? 0);
+    $other_user_id= intval($_GET['user'] ?? 0);
 
-    if ($freelancer_id === 0 || $logged_user_id === $freelancer_id) {
-        die('Invalid User');
+    if ($other_user_id === 0 || $logged_user_id === $other_user_id || !$session->isLoggedIn()) {
+        $session->addMessage('error','You cannot acess this chat');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['message'])) {
         if( !valid_CSRF($_POST['csrf'])){
             $session->addMessage('error', 'Invalid CSRF token.');
-            die(header('Location: chat.php?freelancer=' . $freelancer_id));
+            die(header('Location: chat.php?user=' . $other_user_id));
         }
-        Message::send($db, $logged_user_id, $freelancer_id, $_POST['message']);
-        header("Location: chat.php?freelancer=" . $freelancer_id);
+        Message::send($db, $logged_user_id, $other_user_id, $_POST['message']);
+        header("Location: chat.php?user=" . $other_user_id);
     
     }
 
-    $messages = Message::getConversation($db, $logged_user_id, $freelancer_id);
-    $freelancer = User::getUserbyId($db, $freelancer_id);
+    $messages = Message::getConversation($db, $logged_user_id, $other_user_id);
+    $freelancer = User::getUserbyId($db, $other_user_id);
 
     drawHeader($session);
     drawChat($messages, $freelancer, $logged_user_id);

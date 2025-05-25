@@ -80,9 +80,12 @@
 
                 <?php if($session->getUserType()!=='student'){ ?>
                     <a href="../pages/services_manage.php">My Services</a>
+
+                    <a href="../pages/inbox.php">My Messages</a>
                 <?php } ?>
 
                 <a href="../pages/client_bookings.php">My Reservations</a>
+
 
                 <a href="../actions/action_logout.php">Logout</a>
             </div>

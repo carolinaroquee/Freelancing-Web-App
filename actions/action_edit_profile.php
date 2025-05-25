@@ -14,9 +14,20 @@
     if(!valid_CSRF($_POST['csrf'])){
         die(header('Location:../pages/profile.php'));
     }
-
+    
     $db = getDatabaseConnection();
+
+    $costumer = User::getUser($db,$_POST['username'],$_POST['email']);
+
+    if($costumer){
+        $session->addMessage('error','There is already a user with that username/email');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit;
+    }
+
     $user = User::getUserbyId($db,intval($session->getId()));
+
+
 
     if($user){
         $user->name = $_POST['name'];

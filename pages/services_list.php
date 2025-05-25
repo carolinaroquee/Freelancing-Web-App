@@ -13,11 +13,11 @@
     $service = (!empty ($_GET['service_type'])) ? $_GET['service_type'] : null;
     $min_price = (!empty($_GET['min_price'])) ? floatval($_GET['min_price']) : null;
     $max_price = (!empty($_GET['max_price'])) ? floatval($_GET['max_price']) : null;
-    $min_rating = (!empty($_GET['min_rating'])) ? floatval($_GET['min_rating']) : null;
-    $max_rating = (!empty($_GET['max_rating'])) ? floatval($_GET['max_rating']) : null;
+    $min_rating = (isset($_GET['min_rating']) && is_numeric($_GET['min_rating'])) ? $_GET['min_rating'] : null;   
+    $max_rating = (isset($_GET['max_rating']) && is_numeric($_GET['max_rating'])) ? $_GET['max_rating'] : null;
+
 
     $services = getServices($db,$category,$service,$min_price,$max_price,$min_rating,$max_rating);
-
     drawHeader($session);
     drawServices($services,$category,$service);
     drawFooter($categories);

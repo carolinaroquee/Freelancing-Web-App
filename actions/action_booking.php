@@ -5,6 +5,12 @@ require_once('../utils/session.php');
 $session = new Session();
 $db = getDatabaseConnection();
 
+if (!$session->isLoggedIn()) {
+    $session->addMessage('error', 'You cannot make a reservation without being logged in');
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $service_id = intval($_POST['service_id']);
     $dates = $_POST['dates']; // array de datas

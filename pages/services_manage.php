@@ -21,13 +21,6 @@ $categories = getAllCategories($db);
 
 $services= getServiceByFreelancerId($db, $freelancer_id);
 
-
-
-/*$sql = "SELECT * FROM Service WHERE freelancer_id = ?";
-$stmt = $db->prepare($sql);
-$stmt->execute([$freelancer_id]);
-$services = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
-
 drawHeader($session);
 drawServicesManageTable($services);
 drawFooter($categories);

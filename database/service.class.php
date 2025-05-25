@@ -101,19 +101,19 @@ function getServices(PDO $db, ?string $category, ?string $service_type, ?float $
     }
     if($min_rating !== null){
         $query .= ' AND (
-            SELECT AVG(r.rating)
-            FROM Review r
-            JOIN Booking b ON r.booking_id = b.booking_id
-            WHERE b.service_id = s.service_id
+        SELECT AVG(r.rating)
+        FROM Review r
+        JOIN Booking b ON r.booking_id = b.booking_id
+        WHERE b.service_id = s.service_id
         ) >= :min_rating';
         $params[':min_rating'] = $min_rating;
     }
     if($max_rating !== null){
         $query .= ' AND (
-            SELECT AVG(r.rating)
-            FROM Review r
-            JOIN Booking b ON r.booking_id = b.booking_id
-            WHERE b.service_id = s.service_id
+        SELECT AVG(r.rating)
+        FROM Review r
+        JOIN Booking b ON r.booking_id = b.booking_id
+        WHERE b.service_id = s.service_id
         ) <= :max_rating';
         $params[':max_rating'] = $max_rating;
     }

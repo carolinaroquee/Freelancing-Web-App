@@ -130,11 +130,11 @@ a{
 
 .search-services {
     background-image: url('../docs/Background-navbar2.jpg');
-    min-height: 90vh;
+    min-height: 70vh;
     width: 100%;
     background-repeat: no-repeat;      
     background-size: cover;
-    background-position: center bottom; /* Garante que vês a parte de baixo */
+    background-position: center;  /* Garante que vês a parte de baixo */
     margin: 0;
     padding: 200px 30px 100px 30px;
 }

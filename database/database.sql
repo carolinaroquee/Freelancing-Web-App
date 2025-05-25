@@ -73,7 +73,7 @@ CREATE TABLE Service(
     description TEXT NOT NULL,
     duracao INTEGER NOT NULL,
     price REAL NOT NULL,
-    service_type TEXT CHECK(service_type IN ('individual presencial', 'grupo presencial', 'individual online','grupo online', 'revisão trabalhos')) NOT NULL,
+    service_type TEXT CHECK(service_type IN ('individual presencial', 'grupo presencial', 'revisão trabalhos')) NOT NULL,
     num_sessoes INTEGER NOT NULL,
     status TEXT CHECK(status IN ('ativo', 'inativo')) DEFAULT 'ativo',
     max_students INTEGER,

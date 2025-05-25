@@ -42,5 +42,35 @@ class Message {
 
     return $messages;
   }
+
+  public static function getDistinctSenders(PDO $db, int $receiver_id): array {
+    $stmt = $db->prepare("
+      SELECT DISTINCT User.*
+      FROM Message
+      JOIN User ON Message.sender_id = User.user_id
+      WHERE receiver_id = ?
+    ");
+    $stmt->execute([$receiver_id]);
+
+    $senders = [];
+    while ($row = $stmt->fetch()) {
+      $senders[] = new User(
+        intval($row['user_id']),
+        $row['username'],
+        $row['name'],
+        $row['email'],
+        $row['password'],
+        $row['usertype'],
+        $row['registration_date'],
+        $row['birth_date'] ?? null,
+        $row['address'] ?? null,
+        $row['postal_code'] ?? null,
+        $row['city'] ?? null,
+        $row['profile_image'] ?? null
+      );
+    }
+
+    return $senders;
+  }
 } 
 ?>
