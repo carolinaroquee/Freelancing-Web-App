@@ -12,7 +12,7 @@
       <?php endforeach; ?>
     </div>
 
-    <form method="POST" action="chat.php?freelancer=<?= urlencode($otherUser->id)?>" class="chat-form">
+    <form method="POST" action="chat.php?user=<?= urlencode($otherUser->id)?>" class="chat-form">
         <input type="hidden" name="csrf" value="<?= $_SESSION['csrf'] ?>">
         <textarea name="message" required placeholder="Type your message..."></textarea>
         <button type="submit">Send</button>

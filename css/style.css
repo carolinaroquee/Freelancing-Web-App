@@ -127,39 +127,47 @@ a{
 }
 
 /* main page*/
-
 .search-services {
-    background-image: url('../docs/Background-navbar2.jpg');
-    min-height: 70vh;
-    width: 100%;
-    background-repeat: no-repeat;      
-    background-size: cover;
-    background-position: center;  /* Garante que vês a parte de baixo */
-    margin: 0;
-    padding: 200px 30px 100px 30px;
+  background-image: url('../docs/Background-navbar2.jpg');
+  min-height: 90vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  padding: 120px 20px 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .search-services h2 {
-    font-size: 48px;
-    color: #0063ba;
-    margin-bottom: 2rem;
+  font-size: 42px;
+  color: #0063ba;
+  margin-bottom: 1.5rem;
 }
 
 .search-bar-form {
-    display: flex;
-    justify-content: flex-start; 
+  width: 100%;
+  max-width: 900px;
 }
-
 
 .search-bar {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   padding: 1rem;
   background: white;
   border-radius: 15px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
+}
+
+.search-bar select,
+.search-bar button {
+  flex: 1 1 200px;
+  max-width: 280px;
 }
 
 .search-bar select {
@@ -167,7 +175,6 @@ a{
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 10px;
-  min-width: 200px;
   background-color: #f7f7f7;
   height: 48px;
 }
@@ -181,7 +188,7 @@ a{
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease;
-  height: 48px; 
+  height: 48px;
 }
 
 .search-bar button:hover {

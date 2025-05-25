@@ -68,7 +68,7 @@
 
 } 
 
-function getServices(PDO $db, ?string $category, ?string $service_type, ?float $min_price, ?float $max_price,?int $min_rating, ?int $max_rating): array {
+function getServices(PDO $db, ?string $category, ?string $service_type, ?float $min_price, ?float $max_price): array {
     $query = '
         SELECT s.service_id, s.title, s.price, s.service_type,
                u.name AS freelancer_name, u.user_id,
@@ -98,24 +98,6 @@ function getServices(PDO $db, ?string $category, ?string $service_type, ?float $
     if ($max_price !== null){
         $query .= ' AND s.price <= :max_price';
         $params[':max_price'] = $max_price;
-    }
-    if($min_rating !== null){
-        $query .= ' AND (
-        SELECT AVG(r.rating)
-        FROM Review r
-        JOIN Booking b ON r.booking_id = b.booking_id
-        WHERE b.service_id = s.service_id
-        ) >= :min_rating';
-        $params[':min_rating'] = $min_rating;
-    }
-    if($max_rating !== null){
-        $query .= ' AND (
-        SELECT AVG(r.rating)
-        FROM Review r
-        JOIN Booking b ON r.booking_id = b.booking_id
-        WHERE b.service_id = s.service_id
-        ) <= :max_rating';
-        $params[':max_rating'] = $max_rating;
     }
 
     $stmt = $db->prepare($query); 

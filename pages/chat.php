@@ -31,10 +31,10 @@
     }
 
     $messages = Message::getConversation($db, $logged_user_id, $other_user_id);
-    $freelancer = User::getUserbyId($db, $other_user_id);
+    $other_user = User::getUserbyId($db, $other_user_id);
 
     drawHeader($session);
-    drawChat($messages, $freelancer, $logged_user_id);
+    drawChat($messages, $other_user, $logged_user_id);
     drawFooter($categories);
 
 

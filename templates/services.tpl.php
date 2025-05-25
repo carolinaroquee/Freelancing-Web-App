@@ -70,12 +70,6 @@
             <label for="max_price">Maximum price:</label>
             <input type="number" name="max_price" min = "1">
 
-            <h3>Rating:</h3>
-            <label for="min_rating">Minimum rating:</label>
-            <input type="number" name="min_rating" min ="0" max = "5" value="<?= htmlspecialchars($_GET['min_rating'] ?? '') ?>">
-            <label for="max_rating">Maximum rating:</label>
-            <input type="number" name="max_rating"  min = "0" max ="5" value="<?= htmlspecialchars($_GET['max_rating'] ?? '') ?>">
-
             <button type="submit" class="apply-filters-btn">Apply Filters</button>
           </div>
       </form>
