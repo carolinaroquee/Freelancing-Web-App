@@ -131,6 +131,7 @@
     <p><strong>Number of sessions:</strong> <?= htmlspecialchars($service->num_sessoes) ?></p>
   </div>
 
+
   <div class="booking-form">
     <h3>Mark Service</h3>
     <form action="../actions/action_booking.php" method="POST">
@@ -151,6 +152,11 @@
       <button type="submit">Confirm reservation</button>
     </form>
   </div>
+
+  <div class="contact-freelancer">
+    <a href="chat.php?freelancer=<?= $freelancer->id ?>" class="btn"> Falar com o Freelancer</a>
+  </div>
+
 
   <div class="reviews">
     <h3>Reviews</h3>

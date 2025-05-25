@@ -18,7 +18,7 @@ header {
     border-bottom: 1px solid #ddd;
     height: 80px;
     width: 100%;
-    position: fixed;
+    position: sticky;
     top:0;
     left:0;
 }  
@@ -127,27 +127,29 @@ a{
 }
 
 /* main page*/
-.search-services{
+
+.search-services {
     background-image: url('../docs/Background-navbar2.jpg');
-    height: 25cm;
+    min-height: 90vh;
     width: 100%;
     background-repeat: no-repeat;      
     background-size: cover;
+    background-position: center bottom; /* Garante que vês a parte de baixo */
     margin: 0;
-    padding: 400px 30px;
+    padding: 200px 30px 100px 30px;
 }
 
-.search-services h2{
-    font-size: 70px;
+.search-services h2 {
+    font-size: 48px;
     color: #0063ba;
     margin-bottom: 2rem;
 }
-
 
 .search-bar-form {
     display: flex;
     justify-content: flex-start; 
 }
+
 
 .search-bar {
   display: flex;
@@ -167,6 +169,7 @@ a{
   border-radius: 10px;
   min-width: 200px;
   background-color: #f7f7f7;
+  height: 48px;
 }
 
 .search-bar button {
@@ -178,6 +181,7 @@ a{
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease;
+  height: 48px; 
 }
 
 .search-bar button:hover {

@@ -59,8 +59,8 @@ CREATE TABLE Message (
     message_id INTEGER PRIMARY KEY,
     sender_id INTEGER,
     receiver_id INTEGER,
-    msg TEXT NOT NULL,
-    data_envio DATE NOT NULL,
+    content TEXT NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (sender_id) REFERENCES Users(user_id) ON DELETE SET NULL ON UPDATE CASCADE,
     FOREIGN KEY (receiver_id) REFERENCES Freelancers(freelancer_id) ON DELETE SET NULL ON UPDATE CASCADE
 );

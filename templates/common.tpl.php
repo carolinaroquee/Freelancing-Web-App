@@ -21,6 +21,7 @@
             <link rel="stylesheet" href="../css/admin.css">
             <link rel="stylesheet" href="../css/services_manage.css">
             <link rel="stylesheet" href="../css/client_booking.css">
+            <link rel="stylesheet" href="../css/message.css">
 
             
 
@@ -109,7 +110,7 @@
                         <option value="" disabled selected hidden>Service</option>
                         <option value="individual presencial">Explicação individual</option>
                         <option value="grupo presencial ">Explicação em grupo</option>
-                        <option value="revisão trabalhos">Revisão de trabalhos</option>
+                        <option value="revisão trabalhos">Revision of work</option>
                     </select>
 
                     <button type = "submit">Search </button>
