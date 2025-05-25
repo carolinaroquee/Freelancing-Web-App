@@ -158,13 +158,10 @@
                 <div class="footer-content">
                     <section class="footer-column">
                         <h3>About</h3>
-                        <ul>
-                            <li><a href="">Who we are?</a></li>
-                            <li><a href="">Legal Notice</a></li>
-                            <li><a href="">Privacy Policy</a></li>
-                            <li><a href="">Districts</a></li>
-                            <li><a href="">Work with us</a></li>
-                        </ul>
+                        <p class="footer-about">
+                            Bright Minds is a platform that connects curious learners with talented tutors across the world. 
+                            Whether you're looking for help with school subjects or want to improve a skill, we make education accessible and rewarding.
+                        </p>
                     </section>
                     <section class="footer-column">
                         <h3>Categories</h3>
