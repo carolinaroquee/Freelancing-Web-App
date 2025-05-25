@@ -28,7 +28,7 @@ $sql = "UPDATE Service SET status = ? WHERE service_id = ?";
 $stmt = $db->prepare($sql);
 $stmt->execute([$action, $service_id]);
 
-// Depois de executar o update
+
 $session->addMessage('success', "Serviço atualizado com sucesso.");
 
 header('Location: ../pages/services_manage.php');
