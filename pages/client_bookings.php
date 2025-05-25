@@ -21,6 +21,15 @@ $db = getDatabaseConnection();
 
 $client_id = $session->getId();
 
+$sql = "
+    UPDATE Booking
+    SET status = 'completo'
+    WHERE status = 'pendente' AND data_agendamento < DATE('now') AND cliente_id = ?
+";
+
+$stmt = $db->prepare($sql);
+$stmt->execute([$client_id]);
+
 // Busca todas as reservas do cliente, ordenadas pela data
 $sql = "
     SELECT b.booking_id, b.service_id, b.data_agendamento, b.status, s.title 

@@ -5,7 +5,7 @@
     <html>
     <head>
         <title>Add Service</title>
-        <link rel="stylesheet" href="../css/add_service.css"> <!-- Cria este ficheiro ou cola o CSS que te dou já a seguir -->
+        <link rel="stylesheet" href="../css/add_service.css">
     </head>
     <section class="form-wrapper">
         <h2>Add a New Service</h2>
@@ -84,7 +84,6 @@
               $profileImage = $service['profile_image']; // Caminho da imagem
             ?>
                 <div class="service-card">
-                    <!-- Exibe a imagem do freelancer -->
                     <div class="service-img-container">
                       <img class="profile-photo" src="<?= htmlspecialchars($profileImage) ?>" alt="Freelancer profile photo">
                     </div>

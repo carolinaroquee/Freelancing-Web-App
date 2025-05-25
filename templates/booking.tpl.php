@@ -42,3 +42,26 @@ function drawClientBookingsTable(array $bookings): void {
     <?php endif;
 }
 ?>
+
+
+<?php
+function drawReviewForm($booking): void {
+    // Verifica se a reserva está completa
+    if ($booking['status'] === 'completo'): ?>
+        <div class="rating-form">
+            <h3>Leave a Review</h3>
+            <form action="../actions/action_review.php" method="POST">
+                <input type="hidden" name="booking_id" value="<?= $booking['booking_id'] ?>">
+
+                <label for="rating">Rating (0-5):</label>
+                <input type="number" name="rating" min="0" max="5" required>
+
+                <label for="comment">Comment:</label>
+                <textarea name="comment" required></textarea>
+
+                <button type="submit">Submit Review</button>
+            </form>
+        </div>
+    <?php endif; 
+}
+?>
