@@ -33,7 +33,8 @@
     </form>
 
     <form action="../actions/action_uploadPhoto.php" method="post" enctype="multipart/form-data">
-        <label>Profile Picture: <input type="file" name="image"></label>
+        <label>Profile Picture:</label>
+          <input type="file" name="image">
         <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
         <input type="submit" value="Upload">
       </form>

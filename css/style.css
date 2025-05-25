@@ -291,6 +291,19 @@ footer {
     row-gap: 20px;
 }
 
+.footer-about {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: justify;
+    color: #ccc;
+    max-width: 280px;
+}
+
+.footer-column:first-child {
+    padding-right: 80px;
+}
+
+
 .footer-bottom {
     grid-column: 1 / -1; 
 }
